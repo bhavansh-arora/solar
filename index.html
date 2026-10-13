@@ -4,14 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunvera Solar — Power that rises with you</title>
-  <meta name="description" content="Sunvera designs, installs and guarantees premium home solar and battery systems. $0 down, 25-year warranty, live in as little as 30 days. Get your free savings estimate in 60 seconds." />
+  <meta name="description" content="Sunvera designs and installs home solar and battery systems. See your savings and your real environmental impact in 60 seconds, using EIA and EPA data." />
   <meta name="theme-color" content="#0B1B2B" />
   <meta property="og:title" content="Sunvera Solar — Power that rises with you" />
-  <meta property="og:description" content="Cut your power bill with premium solar + battery. $0 down. Free 60-second savings estimate." />
+  <meta property="og:description" content="See what solar would save you, and the CO₂ your roof could keep out of the air. Free 60-second estimate." />
+  <meta property="og:image" content="assets/img/hero-rooftop-sunset.jpg" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/img/hero-rooftop-sunset.jpg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -31,25 +33,18 @@
     </defs>
   </svg>
 
-  <!-- Announcement -->
-  <div class="announce">
-    <span class="pulse-dot"></span>
-    <span><strong>Fall install slots:</strong> only <b id="slotsLeft">14</b> left in your area this month —</span>
-    <a href="#quote">lock in your date →</a>
-  </div>
-
   <!-- Header -->
-  <header class="nav" id="nav">
+  <header class="nav on-dark" id="nav">
     <div class="container nav-inner">
       <a href="#top" class="brand" aria-label="Sunvera home">
         <svg class="brand-mark"><use href="#mark" /></svg>
         <span>Sunvera</span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Main">
-        <a href="#how">How it works</a>
         <a href="#calculator">Savings</a>
+        <a href="#impact">Impact</a>
+        <a href="#how">How it works</a>
         <a href="#products">Systems</a>
-        <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="nav-cta">
@@ -66,17 +61,15 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-sky" aria-hidden="true">
-        <div class="hero-sun"></div>
-        <div class="hero-glow"></div>
-      </div>
+      <img class="hero-bg" src="assets/img/hero-rooftop-sunset.jpg" alt="Rooftop solar array glowing at sunset" fetchpriority="high" />
+      <div class="hero-shade" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="eyebrow-pill">
-            <span class="stars">★★★★★</span> 4.9 from 3,200+ homeowners
+            <span class="pill-dot"></span> Free design &amp; savings report · no obligation
           </div>
           <h1>Own the sun.<br /><em>Slash</em> your power bill.</h1>
-          <p class="lede">Premium solar and battery systems, designed for your roof and installed by our own certified crews. <strong>$0 down</strong>, a 25-year guarantee, and savings from your very first month.</p>
+          <p class="lede">Solar and battery systems designed for your roof. See exactly what you'd save — and how much carbon your home would keep out of the sky — before you commit to anything.</p>
 
           <form class="hero-form" id="heroForm" novalidate>
             <label class="sr-only" for="heroZip">ZIP code</label>
@@ -89,129 +82,47 @@
           <p class="micro">Free · No obligation · Takes 60 seconds</p>
 
           <ul class="hero-ticks">
-            <li><i></i>$0 down financing</li>
-            <li><i></i>25-year full warranty</li>
-            <li><i></i>Live in ~30 days</li>
+            <li><i></i>$0-down options</li>
+            <li><i></i>25-year warranty</li>
+            <li><i></i>Permits handled for you</li>
           </ul>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <svg class="house" viewBox="0 0 520 440" fill="none">
-            <defs>
-              <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#1E3A5F" /><stop offset="1" stop-color="#0B1B2B" />
-              </linearGradient>
-              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#FFF8EE" /><stop offset="1" stop-color="#F3E6D3" />
-              </linearGradient>
-              <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#3B4A5C" /><stop offset="1" stop-color="#2A3644" />
-              </linearGradient>
-              <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#fff" stop-opacity="0" /><stop offset=".5" stop-color="#fff" stop-opacity=".55" /><stop offset="1" stop-color="#fff" stop-opacity="0" />
-              </linearGradient>
-              <clipPath id="panelsClip"><path d="M130 196 L260 96 L390 196 Z" /></clipPath>
-            </defs>
-            <ellipse cx="260" cy="408" rx="230" ry="18" fill="#0B1B2B" opacity=".18" />
-            <!-- house -->
-            <rect x="120" y="200" width="280" height="200" rx="6" fill="url(#wall)" />
-            <path d="M96 210 L260 82 L424 210 Z" fill="url(#roof)" />
-            <!-- panels -->
-            <g clip-path="url(#panelsClip)">
-              <g transform="translate(0,0)">
-                <path d="M134 194 L260 98 L386 194 Z" fill="url(#panel)" />
-                <g stroke="#5B8BC0" stroke-opacity=".55" stroke-width="1.5">
-                  <path d="M155 178 L365 178" /><path d="M176 162 L344 162" /><path d="M197 146 L323 146" /><path d="M218 130 L302 130" /><path d="M239 114 L281 114" />
-                  <path d="M260 98 L260 194" /><path d="M260 98 L218 194" /><path d="M260 98 L302 194" /><path d="M260 98 L176 194" /><path d="M260 98 L344 194" />
-                </g>
-                <rect class="panel-shine" x="-120" y="90" width="80" height="120" fill="url(#shine)" transform="skewX(-20)" />
-              </g>
-            </g>
-            <!-- door + windows -->
-            <rect x="236" y="300" width="48" height="100" rx="4" fill="#FF6B3D" />
-            <circle cx="274" cy="352" r="3" fill="#FFF8EE" />
-            <rect x="148" y="250" width="64" height="52" rx="4" fill="#1E3A5F" />
-            <rect x="308" y="250" width="64" height="52" rx="4" fill="#1E3A5F" />
-            <path d="M180 250v52M148 276h64M340 250v52M308 276h64" stroke="#FFF8EE" stroke-width="3" />
-            <rect class="window-glow" x="148" y="250" width="64" height="52" rx="4" fill="#FFD15C" />
-            <!-- battery -->
-            <rect x="408" y="318" width="40" height="82" rx="8" fill="#FFF8EE" stroke="#0B1B2B" stroke-opacity=".15" />
-            <rect x="416" y="330" width="24" height="58" rx="4" fill="#E8F5EE" />
-            <rect class="battery-fill" x="416" y="346" width="24" height="42" rx="4" fill="#22C55E" />
-            <path d="M429 352 l-6 12 h6 l-3 12 9 -15 h-6 l3 -9 z" fill="#fff" />
-            <!-- bushes -->
-            <circle cx="120" cy="396" r="22" fill="#4C9F6B" /><circle cx="148" cy="400" r="16" fill="#3E8A5B" />
-            <circle cx="470" cy="398" r="18" fill="#4C9F6B" />
-          </svg>
-
-          <div class="float-card fc-1">
-            <div class="fc-icon sun">☀</div>
-            <div><span class="fc-label">Producing now</span><strong><span id="liveKw">7.42</span> kW</strong></div>
-          </div>
-          <div class="float-card fc-2">
-            <div class="fc-icon green">$</div>
-            <div><span class="fc-label">Saved this month</span><strong>$<span id="liveSaved">187</span></strong></div>
-          </div>
-          <div class="float-card fc-3">
-            <div class="fc-icon dark">⚡</div>
-            <div><span class="fc-label">Battery backup</span><strong>98% · 2 days</strong></div>
-          </div>
-        </div>
+        <aside class="hero-card" aria-label="Typical US home facts">
+          <span class="hc-label">The typical US home</span>
+          <div class="hc-row"><strong>865 <small>kWh/mo</small></strong><span>electricity used</span></div>
+          <div class="hc-row"><strong>~$143 <small>/mo</small></strong><span>average bill</span></div>
+          <div class="hc-row"><strong><span class="sun-text">~4.1</span> <small>t CO₂/yr</small></strong><span>from that power</span></div>
+          <p class="hc-src">EIA 2024 averages; EPA eGRID emissions factor. <a href="#sources">Sources</a></p>
+        </aside>
       </div>
     </section>
 
-    <!-- TRUST BAR -->
-    <section class="trust">
-      <div class="container trust-inner">
-        <p>Certified &amp; trusted by</p>
-        <ul class="trust-logos">
-          <li>NABCEP<span>Certified</span></li>
-          <li>BBB<span>A+ Rated</span></li>
-          <li>Tier&nbsp;1<span>Panels only</span></li>
-          <li>Energy&nbsp;Star<span>Partner</span></li>
-          <li>Licensed<span>&amp; insured</span></li>
-        </ul>
+    <!-- FACT BAR (real, cited) -->
+    <section class="facts">
+      <div class="container facts-grid">
+        <div class="fact reveal"><strong data-count="90" data-suffix="%">0</strong><span>drop in the cost of solar electricity since 2010</span><sup><a href="#src-irena">IRENA</a></sup></div>
+        <div class="fact reveal"><strong data-count="5" data-suffix="M+">0</strong><span>US solar installations — most on home rooftops</span><sup><a href="#src-seia">SEIA</a></sup></div>
+        <div class="fact reveal"><strong data-count="4.1" data-decimals="1" data-suffix="%">0</strong><span>higher sale price for homes with solar</span><sup><a href="#src-zillow">Zillow</a></sup></div>
+        <div class="fact reveal"><strong data-count="25" data-suffix="+ yrs">0</strong><span>of clean power — panels lose only ~0.5%/yr</span><sup><a href="#src-nrel">NREL</a></sup></div>
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats">
-      <div class="container stats-grid">
-        <div class="stat reveal"><strong data-count="12400" data-suffix="+">0</strong><span>homes powered</span></div>
-        <div class="stat reveal"><strong data-count="38" data-prefix="$" data-suffix="M">0</strong><span>saved by customers</span></div>
-        <div class="stat reveal"><strong data-count="96" data-suffix="%">0</strong><span>average bill offset</span></div>
-        <div class="stat reveal"><strong data-count="30">0</strong><span>days to switch on</span></div>
-      </div>
-    </section>
-
-    <!-- PROBLEM / AGITATE -->
+    <!-- PROBLEM -->
     <section class="section problem">
       <div class="container split">
         <div class="reveal">
           <span class="eyebrow">The problem</span>
-          <h2>Your utility raised rates again. <em>And they'll do it next year, too.</em></h2>
-          <p>Electricity prices have climbed steadily for decades, and the bill only goes one way. Every month you rent your power, you're paying for someone else's infrastructure — with nothing to show for it.</p>
-          <p>Solar flips that. You lock in a lower, predictable cost, own the asset on your roof, and keep the lights on when the grid goes down.</p>
+          <h2>You're renting your power <em>from a smokestack.</em></h2>
+          <p>The average US residential electricity price rose from 16.0¢ to 16.5¢ per kWh between 2023 and 2024 — and most of that power still comes from burning fuel. Every month you pay for it, you have nothing to show for it.</p>
+          <p>Solar flips that. You produce your own clean power, lock in a predictable cost, and own the asset on your roof.</p>
           <a href="#calculator" class="link-arrow">See what you'd save →</a>
         </div>
-        <div class="chart-card reveal" aria-label="Illustrative chart comparing rising utility costs with flat solar costs over 25 years">
-          <div class="chart-head">
-            <div><span class="dot dot-red"></span>Utility bill</div>
-            <div><span class="dot dot-sun"></span>With Sunvera</div>
-          </div>
-          <svg viewBox="0 0 400 220" class="chart">
-            <g stroke="var(--line)" stroke-width="1"><path d="M30 190H390M30 140H390M30 90H390M30 40H390" /></g>
-            <path class="chart-area" d="M30 150 C 130 135, 230 105, 390 30 L390 190 L30 190 Z" fill="url(#redFade)" />
-            <defs>
-              <linearGradient id="redFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EF4444" stop-opacity=".22" /><stop offset="1" stop-color="#EF4444" stop-opacity="0" /></linearGradient>
-            </defs>
-            <path class="chart-line" d="M30 150 C 130 135, 230 105, 390 30" stroke="#EF4444" stroke-width="3.5" fill="none" stroke-linecap="round" />
-            <path class="chart-line delay" d="M30 158 L 390 158" stroke="#FFB020" stroke-width="3.5" fill="none" stroke-linecap="round" />
-            <text x="30" y="210" class="chart-tx">Year 1</text><text x="350" y="210" class="chart-tx">Year 25</text>
-            <g class="chart-badge"><rect x="232" y="92" width="122" height="30" rx="15" fill="#0B1B2B" /><text x="293" y="112" text-anchor="middle" fill="#FFF8EE" font-size="12" font-weight="600">You keep the gap</text></g>
-          </svg>
-          <p class="chart-note">Illustrative. Assumes ~3.5% annual utility rate increases.</p>
-        </div>
+        <figure class="photo-stack reveal">
+          <img src="assets/img/smokestacks.jpg" alt="Power plant smokestacks lit up at night" loading="lazy" class="ps-back" />
+          <img src="assets/img/panel-closeup.jpg" alt="Solar panels under a blue sky" loading="lazy" class="ps-front" />
+          <figcaption class="ps-tag"><span>Before</span><span>After</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -219,21 +130,28 @@
     <section class="section calc" id="calculator">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow light">Savings calculator</span>
-          <h2>How much could <em>you</em> save?</h2>
+          <span class="eyebrow light">Savings &amp; impact calculator</span>
+          <h2>What could <em>your</em> roof do?</h2>
           <p>Drag the slider to your average monthly electric bill.</p>
         </div>
         <div class="calc-card reveal">
           <div class="calc-input">
             <label for="bill">Average monthly electric bill</label>
-            <div class="bill-value">$<span id="billOut">180</span><small>/mo</small></div>
-            <input type="range" id="bill" min="50" max="600" step="10" value="180" aria-describedby="billHelp" />
+            <div class="bill-value">$<span id="billOut">140</span><small>/mo</small></div>
+            <input type="range" id="bill" min="50" max="600" step="10" value="140" aria-describedby="billHelp" />
             <div class="range-scale" id="billHelp"><span>$50</span><span>$600+</span></div>
 
             <div class="calc-toggle" role="radiogroup" aria-label="Include battery">
               <button type="button" class="active" data-battery="0" role="radio" aria-checked="true">Solar only</button>
               <button type="button" data-battery="1" role="radio" aria-checked="false">Solar + Battery</button>
             </div>
+
+            <ul class="calc-impact">
+              <li><span class="ci-icon">🌱</span><div><strong><span id="ciTrees">0</span></strong> tree seedlings grown for 10 years</div></li>
+              <li><span class="ci-icon">🚗</span><div><strong><span id="ciCars">0</span></strong> cars taken off the road for a year</div></li>
+              <li><span class="ci-icon">⛽</span><div><strong><span id="ciGas">0</span></strong> gallons of gasoline not burned</div></li>
+            </ul>
+            <p class="calc-impact-note">Equivalent CO₂ over 25 years · <a href="#sources">EPA factors</a></p>
           </div>
           <div class="calc-results">
             <div class="big-result">
@@ -244,12 +162,51 @@
               <div><span>System size</span><strong><span id="sysKw">0</span> kW</strong></div>
               <div><span>Panels</span><strong id="panels">0</strong></div>
               <div><span>Payback</span><strong><span id="payback">0</span> yrs</strong></div>
-              <div><span>CO₂ avoided / yr</span><strong><span id="co2">0</span> t</strong></div>
+              <div><span>CO₂ avoided (25 yrs)</span><strong><span id="co2">0</span> t</strong></div>
             </div>
-            <a href="#quote" class="btn btn-sun btn-block" id="calcCta"><span>Lock in my $<span id="ctaSavings">0</span> savings</span></a>
-            <p class="micro center">Estimates only. Your designer will confirm exact numbers for your roof.</p>
+            <a href="#quote" class="btn btn-sun btn-block" id="calcCta"><span>Get my exact numbers</span></a>
+            <p class="micro center">Estimates use EIA's 2024 average price (16.5¢/kWh) and typical production. Your designer confirms exact numbers for your roof.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact" id="impact">
+      <img class="impact-bg" src="assets/img/solar-farm-aerial.jpg" alt="" loading="lazy" />
+      <div class="impact-shade" aria-hidden="true"></div>
+      <div class="container impact-inner">
+        <div class="section-head reveal">
+          <span class="eyebrow light">Your impact</span>
+          <h2>One roof is a start. <em>A street is a movement.</em></h2>
+          <p>Here's the CO₂ your system — sized from the calculator above — would keep out of the air over 25 years. Now picture your neighbours doing the same.</p>
+        </div>
+
+        <div class="scale-toggle reveal" role="radiogroup" aria-label="Number of homes">
+          <button type="button" class="active" data-homes="1" role="radio" aria-checked="true">Your home</button>
+          <button type="button" data-homes="25" role="radio" aria-checked="false">Your street · 25</button>
+          <button type="button" data-homes="1000" role="radio" aria-checked="false">Your town · 1,000</button>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card reveal">
+            <span class="ic-k">CO₂ kept out of the air</span>
+            <strong><span id="imCo2">0</span><small> tonnes</small></strong>
+          </div>
+          <div class="impact-card reveal">
+            <span class="ic-k">Same as growing</span>
+            <strong><span id="imTrees">0</span><small> tree seedlings for 10 yrs</small></strong>
+          </div>
+          <div class="impact-card reveal">
+            <span class="ic-k">Same as removing</span>
+            <strong><span id="imCars">0</span><small> cars for a year</small></strong>
+          </div>
+          <div class="impact-card reveal">
+            <span class="ic-k">Clean electricity made</span>
+            <strong><span id="imMwh">0</span><small> MWh</small></strong>
+          </div>
+        </div>
+        <p class="impact-note reveal">Uses EPA's national average grid emissions factor (0.000394 t CO₂ per kWh) — a conservative choice — plus EPA equivalencies for cars and seedlings. <a href="#sources">See sources</a>.</p>
       </div>
     </section>
 
@@ -258,39 +215,33 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">How it works</span>
-          <h2>From quote to clean power in <em>four easy steps</em></h2>
-          <p>We handle everything — design, permits, install and utility paperwork. You just enjoy the savings.</p>
+          <h2>From quote to clean power in <em>four steps</em></h2>
+          <p>We handle the design, permits, install and utility paperwork. You get on with your life.</p>
         </div>
-        <ol class="steps">
-          <li class="step reveal">
-            <div class="step-num">01</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H4zM8 19h8M12 15v4" /></svg></div>
-            <h3>Free design</h3>
-            <p>We use satellite imaging to design a custom system for your roof and usage — in 24 hours.</p>
-            <span class="step-time">Day 1</span>
-          </li>
-          <li class="step reveal">
-            <div class="step-num">02</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6" /></svg></div>
-            <h3>Permits handled</h3>
-            <p>Our team files every permit and utility application. Zero paperwork on your side.</p>
-            <span class="step-time">Days 2–20</span>
-          </li>
-          <li class="step reveal">
-            <div class="step-num">03</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M3 20l6-12h6l6 12zM8 14h8M12 8v12" /></svg></div>
-            <h3>1-day install</h3>
-            <p>Our in-house certified crew installs your system cleanly, usually in a single day.</p>
-            <span class="step-time">Day ~25</span>
-          </li>
-          <li class="step reveal">
-            <div class="step-num">04</div>
-            <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" /></svg></div>
-            <h3>Flip the switch</h3>
-            <p>Start producing your own power and track every kilowatt live in the Sunvera app.</p>
-            <span class="step-time">Day ~30</span>
-          </li>
-        </ol>
+        <div class="how-grid">
+          <figure class="how-photo reveal">
+            <img src="assets/img/installer-roof.jpg" alt="Installer carrying a solar panel across a roof" loading="lazy" />
+            <figcaption><strong>Installed by certified crews</strong><span>Clean, safe, and usually done in a day.</span></figcaption>
+          </figure>
+          <ol class="steps-list">
+            <li class="reveal">
+              <div class="sl-num">1</div>
+              <div><h3>Free design</h3><p>We design a system around your roof, shading and actual usage — and show you the numbers up front.</p></div>
+            </li>
+            <li class="reveal">
+              <div class="sl-num">2</div>
+              <div><h3>Permits handled</h3><p>We file every permit and utility interconnection application. No paperwork on your side.</p></div>
+            </li>
+            <li class="reveal">
+              <div class="sl-num">3</div>
+              <div><h3>Installation day</h3><p>Our crew mounts, wires and inspects your system — typically in a single day.</p></div>
+            </li>
+            <li class="reveal">
+              <div class="sl-num">4</div>
+              <div><h3>Flip the switch</h3><p>Once your utility approves, you're producing your own power and can track every kilowatt-hour in the app.</p></div>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -300,119 +251,101 @@
         <div class="section-head reveal">
           <span class="eyebrow">Systems</span>
           <h2>Choose the power that <em>fits your home</em></h2>
-          <p>Every system includes Tier-1 panels, a 25-year warranty and the Sunvera monitoring app.</p>
+          <p>Every system includes Tier-1 panels, a 25-year warranty and live monitoring.</p>
         </div>
         <div class="plans">
           <article class="plan reveal">
-            <h3>Solar Essential</h3>
-            <p class="plan-desc">Cut your bill with high-efficiency rooftop solar.</p>
-            <div class="price"><span>from</span><strong>$0</strong><em>down</em></div>
-            <ul>
-              <li>Tier-1 420W all-black panels</li>
-              <li>Micro-inverters on every panel</li>
-              <li>Live app monitoring</li>
-              <li>25-year product &amp; workmanship warranty</li>
-            </ul>
-            <a href="#quote" class="btn btn-ghost btn-block" data-plan="Solar Essential">Get a quote</a>
+            <div class="plan-img"><img src="assets/img/roof-pitched.jpg" alt="Solar panels on a pitched roof" loading="lazy" /></div>
+            <div class="plan-body">
+              <h3>Solar Essential</h3>
+              <p class="plan-desc">Cut your bill with high-efficiency rooftop solar.</p>
+              <ul>
+                <li>Tier-1 all-black panels</li>
+                <li>Panel-level micro-inverters</li>
+                <li>Live app monitoring</li>
+                <li>25-year warranty</li>
+              </ul>
+              <a href="#quote" class="btn btn-ghost btn-block" data-plan="Solar Essential">Get a quote</a>
+            </div>
           </article>
           <article class="plan featured reveal">
             <div class="badge">Most popular</div>
-            <h3>Solar + Battery</h3>
-            <p class="plan-desc">Savings by day, backup power by night and through outages.</p>
-            <div class="price"><span>from</span><strong>$0</strong><em>down</em></div>
-            <ul>
-              <li>Everything in Essential</li>
-              <li>13.5 kWh home battery</li>
-              <li>Automatic outage backup</li>
-              <li>Time-of-use bill optimisation</li>
-              <li>Priority install scheduling</li>
-            </ul>
-            <a href="#quote" class="btn btn-sun btn-block" data-plan="Solar + Battery">Get a quote</a>
+            <div class="plan-img"><img src="assets/img/family.jpg" alt="Parent with two children outside their home" loading="lazy" /></div>
+            <div class="plan-body">
+              <h3>Solar + Battery</h3>
+              <p class="plan-desc">Savings by day, backup power by night and through outages.</p>
+              <ul>
+                <li>Everything in Essential</li>
+                <li>Home battery storage</li>
+                <li>Automatic outage backup</li>
+                <li>Time-of-use bill optimisation</li>
+              </ul>
+              <a href="#quote" class="btn btn-sun btn-block" data-plan="Solar + Battery">Get a quote</a>
+            </div>
           </article>
           <article class="plan reveal">
-            <h3>Total Home</h3>
-            <p class="plan-desc">Full energy independence with EV charging built in.</p>
-            <div class="price"><span>from</span><strong>$0</strong><em>down</em></div>
-            <ul>
-              <li>Everything in Solar + Battery</li>
-              <li>Dual battery (27 kWh)</li>
-              <li>Level 2 EV charger installed</li>
-              <li>Whole-home backup</li>
-            </ul>
-            <a href="#quote" class="btn btn-ghost btn-block" data-plan="Total Home">Get a quote</a>
+            <div class="plan-img"><img src="assets/img/ev-charging.jpg" alt="Electric car plugged in and charging" loading="lazy" /></div>
+            <div class="plan-body">
+              <h3>Total Home</h3>
+              <p class="plan-desc">Power your house and your car from your own roof.</p>
+              <ul>
+                <li>Everything in Solar + Battery</li>
+                <li>Expanded battery capacity</li>
+                <li>Level 2 EV charger installed</li>
+                <li>Whole-home backup</li>
+              </ul>
+              <a href="#quote" class="btn btn-ghost btn-block" data-plan="Total Home">Get a quote</a>
+            </div>
           </article>
         </div>
-        <p class="plans-foot">Prefer to buy outright? Cash buyers typically see the fastest payback. <a href="#quote">Ask about cash pricing →</a></p>
+        <p class="plans-foot">Loan, lease and cash options available — your advisor shows them side by side. <a href="#quote">Compare my options →</a></p>
       </div>
     </section>
 
     <!-- WHY US -->
     <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Why Sunvera</span>
-          <h2>The solar company that <em>doesn't cut corners</em></h2>
-        </div>
-        <div class="features">
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></svg></div>
-            <h3>25-year, no-nonsense warranty</h3>
-            <p>Panels, inverters, labour and roof penetrations — all covered by one company, for 25 years.</p>
+      <div class="container why">
+        <figure class="why-photo reveal">
+          <img src="assets/img/install-hands.jpg" alt="Technician wiring a solar panel" loading="lazy" />
+        </figure>
+        <div>
+          <div class="reveal">
+            <span class="eyebrow">Why Sunvera</span>
+            <h2>Straight numbers. <em>Solid work.</em></h2>
           </div>
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6" /></svg></div>
-            <h3>Our crews, not subcontractors</h3>
-            <p>Every install is done by Sunvera employees, NABCEP-certified and background-checked.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg></div>
-            <h3>Price-match promise</h3>
-            <p>Found a comparable system for less? We'll match it — and give you $500 for the trouble.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4" /></svg></div>
-            <h3>Production guarantee</h3>
-            <p>If your system produces less than we promised, we pay you the difference. In writing.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg></div>
-            <h3>Live monitoring app</h3>
-            <p>See production, usage and savings in real time. Get alerts before small issues become big ones.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11H3z" /><path d="M9 21v-6h6v6" /></svg></div>
-            <h3>Roof-safe guarantee</h3>
-            <p>Flashed, sealed mounts with a 10-year leak warranty. We'll even fix roof issues we find first.</p>
+          <div class="features">
+            <div class="feature reveal">
+              <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></svg></div>
+              <div><h3>25-year warranty</h3><p>Panels, inverters and workmanship covered by one company.</p></div>
+            </div>
+            <div class="feature reveal">
+              <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4" /></svg></div>
+              <div><h3>Honest estimates</h3><p>Every figure we quote is based on public data and your real usage — no inflated promises.</p></div>
+            </div>
+            <div class="feature reveal">
+              <div class="f-icon"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg></div>
+              <div><h3>Live monitoring</h3><p>See production, savings and CO₂ avoided in real time.</p></div>
+            </div>
+            <div class="feature reveal">
+              <div class="f-icon"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11H3z" /><path d="M9 21v-6h6v6" /></svg></div>
+              <div><h3>Roof-safe installs</h3><p>Flashed, sealed mounts — we inspect your roof before we start.</p></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section class="section reviews" id="reviews">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow light">Reviews</span>
-          <h2>Homeowners <em>love</em> the switch</h2>
-          <div class="rating-summary"><span class="stars big">★★★★★</span><span><strong>4.9 / 5</strong> average from 3,200+ verified reviews</span></div>
+    <!-- LIFE WITH SOLAR -->
+    <section class="life">
+      <div class="container life-grid">
+        <figure class="life-img reveal"><img src="assets/img/home.jpg" alt="Family home with a green lawn" loading="lazy" /></figure>
+        <div class="life-copy reveal">
+          <span class="eyebrow light">Life with solar</span>
+          <h2>Lights on when the grid isn't.</h2>
+          <p>With a home battery, your essentials keep running through outages — the fridge, the Wi-Fi, the lights. And on sunny days, the power your family uses comes straight from your roof.</p>
+          <a href="#quote" class="btn btn-sun">Design my system</a>
         </div>
-        <div class="review-track">
-          <figure class="review reveal">
-            <div class="stars">★★★★★</div>
-            <blockquote>“Our bill went from $240 to $11. The crew was in and out in one day and left the place spotless. Wish we'd done it years ago.”</blockquote>
-            <figcaption><span class="avatar" style="--h:18">M</span><div><strong>Maria G.</strong><span>Phoenix, AZ · 9.6 kW + battery</span></div></figcaption>
-          </figure>
-          <figure class="review reveal">
-            <div class="stars">★★★★★</div>
-            <blockquote>“Three-day storm outage on our street. We were the only house with lights, Wi-Fi and a working fridge. The battery paid for itself in peace of mind.”</blockquote>
-            <figcaption><span class="avatar" style="--h:200">D</span><div><strong>David &amp; Priya K.</strong><span>Austin, TX · Total Home</span></div></figcaption>
-          </figure>
-          <figure class="review reveal">
-            <div class="stars">★★★★★</div>
-            <blockquote>“No pressure, no gimmicks. Our designer walked us through the actual numbers and they turned out to be conservative. App is fantastic.”</blockquote>
-            <figcaption><span class="avatar" style="--h:140">J</span><div><strong>James O.</strong><span>San Diego, CA · 7.2 kW</span></div></figcaption>
-          </figure>
-        </div>
+        <figure class="life-img small reveal"><img src="assets/img/seedling.jpg" alt="Hands holding a young seedling" loading="lazy" /></figure>
       </div>
     </section>
 
@@ -422,16 +355,16 @@
         <div class="quote-copy reveal">
           <span class="eyebrow">Free estimate</span>
           <h2>Get your custom solar plan in <em>60 seconds</em></h2>
-          <p>Answer four quick questions. A Sunvera energy advisor will send your personalised design and savings report — no pushy sales calls, ever.</p>
+          <p>Answer four quick questions. An energy advisor will send your personalised design, savings and impact report — no pushy sales calls.</p>
           <ul class="checklist">
             <li>Custom roof design &amp; panel layout</li>
-            <li>Exact monthly savings &amp; payback</li>
-            <li>Every rebate &amp; incentive you qualify for</li>
-            <li>$0-down, loan &amp; cash options side by side</li>
+            <li>Monthly savings &amp; payback period</li>
+            <li>CO₂ your system would avoid</li>
+            <li>Rebates &amp; incentives at your address</li>
           </ul>
           <div class="guarantee">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z" /></svg>
-            <p><strong>Our promise:</strong> your info is never sold or shared. One advisor, one call, at a time that suits you.</p>
+            <p><strong>Our promise:</strong> your details are never sold or shared. One advisor, one call, at a time that suits you.</p>
           </div>
         </div>
 
@@ -487,8 +420,8 @@
 
           <div class="form-success" id="formSuccess" hidden>
             <div class="success-sun"><svg><use href="#mark" /></svg></div>
-            <h3>You're on the list, <span id="successName">friend</span>! ☀️</h3>
-            <p>Your advisor is designing your system now. Expect your custom savings report within 24 hours.</p>
+            <h3>Thanks, <span id="successName">friend</span>! ☀️</h3>
+            <p>Your advisor is designing your system now. Expect your custom savings and impact report within one business day.</p>
             <a href="#top" class="btn btn-ghost">Back to top</a>
           </div>
         </div>
@@ -500,32 +433,36 @@
       <div class="container faq-wrap">
         <div class="section-head reveal">
           <span class="eyebrow">FAQ</span>
-          <h2>Questions? <em>We've got answers.</em></h2>
+          <h2>Questions? <em>Straight answers.</em></h2>
         </div>
         <div class="faq">
           <details class="reveal" open>
             <summary>How much does solar really cost?</summary>
-            <p>Most homeowners go solar with $0 down and a monthly payment lower than their current electric bill. Cash buyers pay more upfront but see the biggest lifetime savings. Your advisor will show every option side by side.</p>
+            <p>It depends on your roof, usage and local prices. Many homeowners choose $0-down financing with a monthly payment close to or below their current bill; cash buyers pay more upfront but see the largest lifetime savings. Your advisor shows every option side by side.</p>
           </details>
           <details class="reveal">
             <summary>Will solar work on my roof?</summary>
-            <p>Most roofs facing south, east or west work great. We assess shading, pitch and roof condition with satellite imaging before you commit to anything — and we'll tell you honestly if it isn't a fit.</p>
+            <p>Most roofs facing south, east or west work well. We assess shading, pitch and roof condition before you commit to anything — and we'll tell you honestly if it isn't a fit.</p>
           </details>
           <details class="reveal">
             <summary>What happens when the power goes out?</summary>
-            <p>With a Sunvera battery, your home switches to backup power automatically in milliseconds. Without a battery, grid-tied systems shut off during outages for line-worker safety.</p>
+            <p>With a battery, your home switches to backup power automatically. Without one, grid-tied systems shut off during outages for line-worker safety.</p>
           </details>
           <details class="reveal">
             <summary>Are there incentives or rebates?</summary>
-            <p>Many states, cities and utilities offer rebates, performance payments or net-metering credits. Programs change often, so your advisor checks every incentive available at your address when building your plan.</p>
+            <p>Many states, cities and utilities offer rebates, performance payments or net-metering credits. Programs change often, so your advisor checks what's available at your address when building your plan.</p>
           </details>
           <details class="reveal">
             <summary>How long do panels last?</summary>
-            <p>Our Tier-1 panels are warrantied to still produce at least 87% of their original output after 25 years, and they typically keep working well beyond that.</p>
+            <p>Well over 25 years. NREL's review of field data found a median output loss of about 0.5% per year, so a well-installed system keeps producing the large majority of its original power for decades.</p>
           </details>
           <details class="reveal">
             <summary>Does solar increase my home's value?</summary>
-            <p>Studies have consistently found that homes with owned solar systems tend to sell at a premium compared with similar homes without solar.</p>
+            <p>A 2019 Zillow analysis found homes with solar sold for 4.1% more on average than comparable homes without it. Results vary by market.</p>
+          </details>
+          <details class="reveal">
+            <summary>How do you calculate the environmental impact?</summary>
+            <p>We estimate the electricity your system produces and multiply it by the EPA's national average grid emissions factor. Equivalents (cars, seedlings, gasoline) use the EPA Greenhouse Gas Equivalencies Calculator. Your actual impact depends on your local grid mix.</p>
           </details>
         </div>
       </div>
@@ -533,14 +470,31 @@
 
     <!-- FINAL CTA -->
     <section class="final-cta">
+      <img class="final-bg" src="assets/img/hero-rooftop-sunset.jpg" alt="" loading="lazy" />
       <div class="container final-inner reveal">
         <svg class="final-mark" aria-hidden="true"><use href="#mark" /></svg>
-        <h2>The sun's coming up tomorrow.<br /><em>Will you be ready?</em></h2>
-        <p>Join 12,400+ homeowners paying less for cleaner power.</p>
+        <h2>The sun's coming up tomorrow.<br /><em>Will your roof be ready?</em></h2>
+        <p>Find out what you'd save — and what you'd stop putting in the air.</p>
         <div class="final-actions">
           <a href="#quote" class="btn btn-sun btn-lg">Get my free quote</a>
           <a href="tel:+18005550199" class="btn btn-outline-light btn-lg">Call (800) 555-0199</a>
         </div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="sources" id="sources">
+      <div class="container">
+        <h2>Sources</h2>
+        <ol>
+          <li id="src-eia">U.S. Energy Information Administration — average residential electricity price 16.5¢/kWh and 865 kWh/month per customer in 2024. <a href="https://www.eia.gov/todayinenergy/detail.php?id=65244" target="_blank" rel="noopener">eia.gov</a></li>
+          <li id="src-epa">U.S. EPA — Greenhouse Gas Equivalencies Calculator: 3.94×10⁻⁴ t CO₂/kWh (eGRID national average), 4.29 t CO₂e per passenger vehicle per year, 0.060 t CO₂ per urban tree seedling per year (10 years), 8.887×10⁻³ t CO₂ per gallon of gasoline. <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references" target="_blank" rel="noopener">epa.gov</a></li>
+          <li id="src-irena">IRENA — global weighted-average cost of utility-scale solar electricity fell from $0.460/kWh (2010) to $0.044/kWh (2023), a 90% decline. <a href="https://www.irena.org/Publications/2024/Sep/Renewable-Power-Generation-Costs-in-2023" target="_blank" rel="noopener">irena.org</a></li>
+          <li id="src-seia">Solar Energy Industries Association — US surpassed 5 million solar installations (2024), the large majority residential. <a href="https://www.seia.org/solar-installations" target="_blank" rel="noopener">seia.org</a></li>
+          <li id="src-zillow">Zillow — homes with solar sold for 4.1% more on average (2019 analysis). <a href="https://www.zillow.com/research/solar-panels-house-sell-more-23798/" target="_blank" rel="noopener">zillow.com</a></li>
+          <li id="src-nrel">NREL, Jordan &amp; Kurtz — "Photovoltaic Degradation Rates — An Analytical Review": median degradation 0.5%/year. <a href="https://research-hub.nrel.gov/en/publications/photovoltaic-degradation-rates-an-analytical-review-2/" target="_blank" rel="noopener">nrel.gov</a></li>
+        </ol>
+        <p class="sources-note">Calculator figures are estimates, not a quote. Savings and impact vary by location, roof, usage, utility rates and local grid mix.</p>
       </div>
     </section>
   </main>
@@ -549,7 +503,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#top" class="brand light"><svg class="brand-mark"><use href="#mark" /></svg><span>Sunvera</span></a>
-        <p>Power that rises with you. Premium home solar, batteries and EV charging.</p>
+        <p>Power that rises with you. Home solar, batteries and EV charging.</p>
       </div>
       <div>
         <h4>Solutions</h4>
@@ -557,16 +511,16 @@
       </div>
       <div>
         <h4>Company</h4>
-        <a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#quote">Contact</a>
+        <a href="#how">How it works</a><a href="#impact">Impact</a><a href="#faq">FAQ</a><a href="#sources">Sources</a>
       </div>
       <div>
         <h4>Talk to us</h4>
-        <a href="tel:+18005550199">(800) 555-0199</a><a href="mailto:hello@sunvera.example">hello@sunvera.example</a><span>Mon–Sat · 8am–8pm</span>
+        <a href="tel:+18005550199">(800) 555-0199</a><a href="mailto:hello@sunvera.com">hello@sunvera.com</a><span>Mon–Sat · 8am–8pm</span>
       </div>
     </div>
     <div class="container footer-bottom">
       <span>© <span id="year"></span> Sunvera Energy. All rights reserved.</span>
-      <span>Savings figures are estimates and vary by location, usage, roof and utility rates.</span>
+      <span>Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</span>
     </div>
   </footer>
 

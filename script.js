@@ -1,7 +1,7 @@
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-  const fmt = (n) => Math.round(n).toLocaleString('en-US');
+  const fmt = (n, d = 0) => Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   $('#year').textContent = new Date().getFullYear();
@@ -11,7 +11,7 @@
   const sticky = $('#stickyCta');
   const quote = $('#quote');
   const onScroll = () => {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
+    nav.classList.toggle('scrolled', window.scrollY > 40);
     const q = quote.getBoundingClientRect();
     const nearQuote = q.top < window.innerHeight && q.bottom > 0;
     sticky.classList.toggle('show', window.scrollY > 600 && !nearQuote);
@@ -21,103 +21,126 @@
 
   const burger = $('#burger');
   const links = $('#navLinks');
-  const closeMenu = () => { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); };
-  burger.addEventListener('click', () => {
-    const open = links.classList.toggle('open');
+  const setMenu = (open) => {
+    links.classList.toggle('open', open);
+    nav.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
-  });
-  $$('a', links).forEach((a) => a.addEventListener('click', closeMenu));
+  };
+  burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  $$('a', links).forEach((a) => a.addEventListener('click', () => setMenu(false)));
 
-  /* ---------- Reveal on scroll + counters ---------- */
-  const animateCount = (el) => {
-    const target = +el.dataset.count;
-    const pre = el.dataset.prefix || '';
-    const suf = el.dataset.suffix || '';
-    if (reduceMotion) { el.textContent = pre + fmt(target) + suf; return; }
-    const dur = 1600;
+  /* ---------- Animated numbers ---------- */
+  const tween = (el, to, { decimals = 0, prefix = '', suffix = '', dur = 1400 } = {}) => {
+    const from = parseFloat(el.dataset.current || '0');
+    el.dataset.current = to;
+    if (reduceMotion) { el.textContent = prefix + fmt(to, decimals) + suffix; return; }
+    cancelAnimationFrame(el._raf);
     const start = performance.now();
-    const tick = (now) => {
+    const step = (now) => {
       const t = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = pre + fmt(target * eased) + suf;
-      if (t < 1) requestAnimationFrame(tick);
+      const e = 1 - Math.pow(1 - t, 3);
+      el.textContent = prefix + fmt(from + (to - from) * e, decimals) + suffix;
+      if (t < 1) el._raf = requestAnimationFrame(step);
     };
-    requestAnimationFrame(tick);
+    el._raf = requestAnimationFrame(step);
   };
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       e.target.classList.add('in');
-      $$('[data-count]', e.target).forEach(animateCount);
-      if (e.target.matches('[data-count]')) animateCount(e.target);
+      $$('[data-count]', e.target).forEach((el) => tween(el, +el.dataset.count, {
+        decimals: +(el.dataset.decimals || 0), prefix: el.dataset.prefix || '', suffix: el.dataset.suffix || '', dur: 1600,
+      }));
       io.unobserve(e.target);
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   $$('.reveal').forEach((el) => io.observe(el));
 
-  /* ---------- Live hero widgets ---------- */
-  const liveKw = $('#liveKw');
-  const liveSaved = $('#liveSaved');
-  let saved = 187;
-  if (!reduceMotion) {
-    setInterval(() => {
-      liveKw.textContent = (7.1 + Math.random() * 0.7).toFixed(2);
-      if (Math.random() > 0.6) liveSaved.textContent = ++saved;
-    }, 2200);
-  }
+  /* ---------- Savings + impact model ----------
+     Public inputs (see #sources on the page):
+     - EIA 2024 avg residential price: 16.5¢/kWh
+     - NREL median module degradation: 0.5%/yr
+     - EPA: 3.94e-4 t CO2/kWh (eGRID national average), 4.29 t CO2e per car-year,
+            0.060 t CO2 per seedling-year (10-yr growth), 8.887e-3 t CO2 per gallon of gasoline
+     Assumptions (edit for your market): production per kW, installed cost, rate escalation. */
+  const PRICE = 0.165;
+  const DEGRADATION = 0.005;
+  const RATE_ESCALATION = 0.025;
+  const KWH_PER_KW = 1400;
+  const OFFSET = 0.95;
+  const COST_PER_KW = 2800;
+  const PANEL_W = 420;
+  const BATTERY_COST = 11000;
+  const BATTERY_VALUE = 0.06;
+  const YEARS = 25;
+  const EPA = { co2PerKwh: 3.94e-4, car: 4.29, seedling10yr: 0.060 * 10, gallon: 8.887e-3 };
 
-  /* ---------- Savings calculator ---------- */
   const bill = $('#bill');
   let battery = false;
-  const RATE_INFLATION = 0.035;  // annual utility rate increase
-  const OFFSET = 0.95;           // share of bill offset by solar
-  const KWH_PRICE = 0.16;        // $/kWh
-  const KWH_PER_KW = 1400;       // annual production per kW
-  const COST_PER_KW = 2800;      // net installed $/W * 1000
-  const BATTERY_COST = 11000;
-  const BATTERY_VALUE = 0.08;    // extra bill value from TOU shifting
+  let homes = 1;
+  let model = {};
 
-  const setText = (id, v) => { $(id).textContent = v; };
-
-  const calc = () => {
+  const compute = () => {
     const b = +bill.value;
-    const pct = ((b - bill.min) / (bill.max - bill.min)) * 100;
-    bill.style.setProperty('--p', pct + '%');
-    setText('#billOut', b >= 600 ? '600+' : b);
-
-    const annualBill = b * 12;
-    const kw = (annualBill / KWH_PRICE) / KWH_PER_KW;
-    const panels = Math.ceil((kw * 1000) / 420);
+    const annualKwh = (b * 12 / PRICE) * OFFSET;
+    const kw = annualKwh / KWH_PER_KW;
     const cost = kw * COST_PER_KW + (battery ? BATTERY_COST : 0);
-    const offset = OFFSET + (battery ? BATTERY_VALUE : 0);
+    const valueShare = 1 + (battery ? BATTERY_VALUE : 0);
 
-    let lifetime = 0, cum = 0, payback = 0;
-    for (let y = 0; y < 25; y++) {
-      const yearSave = annualBill * Math.pow(1 + RATE_INFLATION, y) * Math.min(offset, 1.02);
-      lifetime += yearSave;
-      cum += yearSave;
-      if (!payback && cum >= cost) payback = y + 1;
+    let lifetimeKwh = 0, savings = 0, payback = 0;
+    for (let y = 0; y < YEARS; y++) {
+      const kwh = annualKwh * Math.pow(1 - DEGRADATION, y);
+      lifetimeKwh += kwh;
+      savings += kwh * PRICE * Math.pow(1 + RATE_ESCALATION, y) * valueShare;
+      if (!payback && savings >= cost) payback = y + 1;
     }
-    const net = Math.max(lifetime - cost, 0);
-    const co2 = (kw * KWH_PER_KW * 0.39) / 1000;
-
-    setText('#savings25', fmt(net));
-    setText('#ctaSavings', fmt(net));
-    setText('#sysKw', kw.toFixed(1));
-    setText('#panels', panels);
-    setText('#payback', payback || '25+');
-    setText('#co2', co2.toFixed(1));
+    const co2 = lifetimeKwh * EPA.co2PerKwh;
+    return {
+      b, kw, panels: Math.ceil((kw * 1000) / PANEL_W), payback,
+      net: Math.max(savings - cost, 0), lifetimeKwh, co2,
+      trees: co2 / EPA.seedling10yr, cars: co2 / EPA.car, gallons: co2 / EPA.gallon,
+    };
   };
-  bill.addEventListener('input', calc);
-  $$('.calc-toggle button').forEach((btn) => btn.addEventListener('click', () => {
-    $$('.calc-toggle button').forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
+
+  const renderCalc = () => {
+    model = compute();
+    const pct = ((model.b - bill.min) / (bill.max - bill.min)) * 100;
+    bill.style.setProperty('--p', pct + '%');
+    $('#billOut').textContent = model.b >= 600 ? '600+' : model.b;
+    const opts = { dur: 500 };
+    tween($('#savings25'), model.net, opts);
+    tween($('#sysKw'), model.kw, { ...opts, decimals: 1 });
+    $('#panels').textContent = model.panels;
+    $('#payback').textContent = model.payback || '25+';
+    tween($('#co2'), model.co2, opts);
+    tween($('#ciTrees'), model.trees, opts);
+    tween($('#ciCars'), model.cars, { ...opts, decimals: 1 });
+    tween($('#ciGas'), model.gallons, opts);
+    renderImpact(500);
+  };
+
+  const renderImpact = (dur = 900) => {
+    const n = homes;
+    const small = model.co2 * n < 1000;
+    tween($('#imCo2'), model.co2 * n, { dur, decimals: small ? 0 : 0 });
+    tween($('#imTrees'), model.trees * n, { dur });
+    tween($('#imCars'), model.cars * n, { dur, decimals: model.cars * n < 100 ? 1 : 0 });
+    tween($('#imMwh'), (model.lifetimeKwh / 1000) * n, { dur });
+  };
+
+  bill.addEventListener('input', renderCalc);
+
+  const radioGroup = (selector, onPick) => $$(selector).forEach((btn, _, all) => btn.addEventListener('click', () => {
+    all.forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
     btn.classList.add('active');
     btn.setAttribute('aria-checked', 'true');
-    battery = btn.dataset.battery === '1';
-    calc();
+    onPick(btn);
   }));
-  calc();
+  radioGroup('.calc-toggle button', (btn) => { battery = btn.dataset.battery === '1'; renderCalc(); });
+  radioGroup('.scale-toggle button', (btn) => { homes = +btn.dataset.homes; renderImpact(); });
+
+  renderCalc();
 
   /* ---------- Multi-step lead form ---------- */
   const form = $('#leadForm');
@@ -133,7 +156,7 @@
     $('#stepNum').textContent = i + 1;
     $('#progressBar').style.width = ((i + 1) / steps.length) * 100 + '%';
     backBtn.hidden = i === 0;
-    nextBtn.innerHTML = i === steps.length - 1 ? 'Get my free plan ☀' : 'Continue →';
+    nextBtn.textContent = i === steps.length - 1 ? 'Get my free plan ☀' : 'Continue →';
     errorEl.textContent = '';
   };
 
@@ -175,7 +198,8 @@
     if (current < steps.length - 1) { showStep(current + 1); return; }
 
     const data = Object.fromEntries(new FormData(form));
-    // Hook up your CRM / backend here, e.g.:
+    data.estimate = { monthlyBill: model.b, systemKw: +model.kw.toFixed(1), co2Tonnes25y: Math.round(model.co2), battery };
+    // Send to your CRM / backend here, e.g.:
     // fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
     console.info('Sunvera lead captured', data);
 
