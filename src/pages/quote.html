@@ -1,0 +1,102 @@
+<!--{"title": "Get Your Free Solar Quote", "description": "Get a free, no-obligation solar design with your savings, payback and environmental impact. Takes about 60 seconds.", "nav": "quote", "bodyclass": "page-quote", "image": "assets/img/advisor.jpg"}-->
+    <section class="quote-page">
+      <div class="qp-bg" aria-hidden="true"><img src="assets/img/hero-rooftop-sunset.jpg" alt="" /></div>
+      <div class="container quote-grid">
+        <div class="quote-copy">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Get a quote</span></nav>
+          <h1>Your custom solar plan in <em>60 seconds.</em></h1>
+          <p class="lede">Answer four quick questions. An energy advisor will send your personalised design, savings and impact report — no pushy sales calls.</p>
+
+          <div class="estimate-chip" id="estimateChip" hidden>
+            <span class="ec-label">Your estimate so far</span>
+            <div class="ec-vals">
+              <div><strong>$<span id="ecBill">0</span></strong><small>monthly bill</small></div>
+              <div><strong><span id="ecKw">0</span> kW</strong><small>system size</small></div>
+              <div><strong><span id="ecCo2">0</span> t</strong><small>CO₂ avoided</small></div>
+            </div>
+          </div>
+
+          <ul class="checklist light">
+            <li>Custom roof design &amp; panel layout</li>
+            <li>Monthly savings &amp; payback period</li>
+            <li>CO₂ your system would avoid</li>
+            <li>Rebates &amp; incentives at your address</li>
+          </ul>
+
+          <div class="next-steps">
+            <h2>What happens next</h2>
+            <ol>
+              <li><strong>Within one business day</strong> — your advisor reviews your roof and usage.</li>
+              <li><strong>Your report</strong> — design, savings, financing and impact, by email.</li>
+              <li><strong>A short call</strong> — at a time that suits you, to answer questions. No pressure.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="form-card" id="formCard">
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="form-step-label"><span id="stepNum">1</span> of 4</div>
+          <form id="leadForm" novalidate>
+            <fieldset class="fstep active" data-step="1">
+              <legend>Do you own your home?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="owner" value="yes" required /><span>🏡 Yes, I own it</span></label>
+                <label class="choice"><input type="radio" name="owner" value="no" /><span>🔑 No, I rent</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="2">
+              <legend>What are you interested in?</legend>
+              <div class="choices grid-2">
+                <label class="choice"><input type="radio" name="plan" value="Solar Essential" required /><span>☀️ Solar panels</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Solar + Battery" /><span>🔋 Solar + battery</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Total Home" /><span>🚗 Solar + battery + EV</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Not sure" /><span>🤔 Not sure yet</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="3">
+              <legend>Where's the home?</legend>
+              <label class="input-label" for="address">Street address</label>
+              <input class="input" id="address" name="address" autocomplete="street-address" placeholder="123 Sunny Lane" required />
+              <label class="input-label" for="zip">ZIP code</label>
+              <input class="input" id="zip" name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="85001" required pattern="\d{5}" />
+              <label class="input-label" for="billAmt">Average monthly electric bill</label>
+              <div class="input-prefix"><span>$</span><input class="input" id="billAmt" name="monthlyBill" inputmode="numeric" placeholder="140" required /></div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="4">
+              <legend>Where should we send your plan?</legend>
+              <label class="input-label" for="name">Full name</label>
+              <input class="input" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              <label class="input-label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="jane@email.com" required />
+              <label class="input-label" for="phone">Phone</label>
+              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" required />
+              <p class="consent">By submitting, you agree to be contacted by Sunvera about your quote. Your details are never sold or shared.</p>
+            </fieldset>
+
+            <p class="form-error" id="formError" role="alert"></p>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-text" id="backBtn" hidden>← Back</button>
+              <button type="submit" class="btn btn-sun btn-lg" id="nextBtn">Continue →</button>
+            </div>
+          </form>
+
+          <div class="form-success" id="formSuccess" hidden>
+            <div class="success-sun"><svg><use href="#mark" /></svg></div>
+            <h3>Thanks, <span id="successName">friend</span>! ☀️</h3>
+            <p>Your advisor is designing your system now. Expect your custom savings and impact report within one business day.</p>
+            <div class="success-links">
+              <a href="impact.html" class="btn btn-ghost">See your impact</a>
+              <a href="how-it-works.html" class="btn btn-ghost">What happens next</a>
+            </div>
+          </div>
+
+          <div class="form-trust">
+            <span>🔒 Secure &amp; private</span><span>✓ No obligation</span><span>☎ (800) 555-0199</span>
+          </div>
+        </div>
+      </div>
+    </section>

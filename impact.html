@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Environmental Impact of Home Solar · Sunvera Solar</title>
+  <meta name="description" content="See how much CO₂ a home solar system keeps out of the air — for one home, a street or a whole town — using EPA emissions data. Every number is sourced." />
+  <meta name="theme-color" content="#0B1B2B" />
+  <link rel="canonical" href="https://solar.codebunny.net/impact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sunvera Solar" />
+  <meta property="og:title" content="The Environmental Impact of Home Solar · Sunvera Solar" />
+  <meta property="og:description" content="See how much CO₂ a home solar system keeps out of the air — for one home, a street or a whole town — using EPA emissions data. Every number is sourced." />
+  <meta property="og:image" content="https://solar.codebunny.net/assets/img/solar-farm-aerial.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#top">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="sunGrad" x1="6" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFD15C" /><stop offset="1" stop-color="#FF6B3D" />
+      </linearGradient>
+      <symbol id="mark" viewBox="0 0 48 48">
+        <path d="M6 30a18 18 0 0 1 36 0Z" fill="url(#sunGrad)" />
+        <g stroke="#FFB020" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M24 3v4" /><path d="M8.4 9.4l2.8 2.8" /><path d="M39.6 9.4l-2.8 2.8" /><path d="M2 21h4" /><path d="M42 21h4" />
+        </g>
+        <path d="M4 34h40M9 39.5h30M15 45h18" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="nav on-dark" id="nav">
+    <div class="container nav-inner">
+      <a href="./" class="brand" aria-label="Sunvera home">
+        <svg class="brand-mark"><use href="#mark" /></svg>
+        <span>Sunvera</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="solutions.html" data-nav="solutions">Solutions</a>
+        <a href="savings.html" data-nav="savings">Savings</a>
+        <a href="impact.html" data-nav="impact" aria-current="page">Impact</a>
+        <a href="how-it-works.html" data-nav="how">How it works</a>
+        <a href="about.html" data-nav="about">About</a>
+        <a href="faq.html" data-nav="faq">FAQ</a>
+        <a href="quote.html" class="btn btn-sun nav-menu-cta">Get my free quote</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="tel:+18005550199" class="nav-phone">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1Z"/></svg>
+          (800) 555-0199
+        </a>
+        <a href="quote.html" class="btn btn-sun btn-sm">Get my free quote</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+<section class="page-hero">
+      <img class="page-hero-bg" src="assets/img/wind-sunset.jpg" alt="Wind turbines over a field at sunset" fetchpriority="high" />
+      <div class="page-hero-shade" aria-hidden="true"></div>
+      <div class="container page-hero-inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Impact</span></nav>
+        <h1>Your roof can <em>change the air.</em></h1>
+        <p class="lede">The typical US home's electricity is responsible for about 4 tonnes of CO₂ a year. Here's what happens when that power comes from the sun instead.</p>
+      </div>
+    </section>
+
+    <section class="impact" id="impact">
+      <img class="impact-bg" src="assets/img/solar-farm-aerial.jpg" alt="" loading="lazy" />
+      <div class="impact-shade" aria-hidden="true"></div>
+      <div class="container impact-inner">
+        <div class="section-head reveal">
+          <span class="eyebrow light">Impact calculator</span>
+          <h2>One roof is a start. <em>A street is a movement.</em></h2>
+        </div>
+        <div class="mini-slider reveal">
+          <label for="bill">Your average monthly electric bill: <strong>$<span data-bill-out>140</span></strong></label>
+          <input type="range" id="bill" min="50" max="600" step="10" value="140" data-bill />
+        </div>
+        <div class="seg scale-toggle reveal" role="radiogroup" aria-label="Number of homes">
+          <button type="button" class="active" data-homes="1" role="radio" aria-checked="true">Your home</button>
+          <button type="button" data-homes="25" role="radio" aria-checked="false">Your street · 25</button>
+          <button type="button" data-homes="1000" role="radio" aria-checked="false">Your town · 1,000</button>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-card reveal"><span class="ic-k">CO₂ kept out of the air</span><strong><span data-impact="co2">0</span><small>tonnes over 25 years</small></strong></div>
+          <div class="impact-card reveal"><span class="ic-k">Same as growing</span><strong><span data-impact="trees">0</span><small>tree seedlings for 10 years</small></strong></div>
+          <div class="impact-card reveal"><span class="ic-k">Same as removing</span><strong><span data-impact="cars">0</span><small>cars from the road for a year</small></strong></div>
+          <div class="impact-card reveal"><span class="ic-k">Clean electricity made</span><strong><span data-impact="mwh">0</span><small>megawatt-hours</small></strong></div>
+        </div>
+        <p class="impact-note reveal">Uses EPA's national average grid emissions factor (0.000394 t CO₂ per kWh) — a conservative choice — plus EPA equivalencies for cars and seedlings. <a href="impact.html#sources">See sources</a>.</p>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="reveal">
+          <span class="eyebrow">Why it matters</span>
+          <h2>Electricity is a <em>big slice</em> of a home's footprint</h2>
+          <p>The EPA's national average grid emissions factor works out to about 0.39 kg of CO₂ for every kilowatt-hour delivered to a home. With the average US household using 865 kWh a month (EIA, 2024), that's roughly <strong>4.1 tonnes of CO₂ a year</strong>, just from electricity.</p>
+          <p>Solar panels produce electricity with no emissions while they run. Every kilowatt-hour they make is one the grid doesn't have to generate.</p>
+        </div>
+        <figure class="framed reveal"><img src="assets/img/seedling.jpg" alt="Hands holding a young seedling" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The bigger picture</span>
+          <h2>Solar has gone <em>mainstream</em></h2>
+        </div>
+        <div class="big-facts">
+          <div class="big-fact reveal"><strong data-count="90" data-suffix="%">0</strong><p>Drop in the global average cost of utility-scale solar electricity between 2010 and 2023 — from $0.460 to $0.044 per kWh.</p><a href="#src-irena">IRENA</a></div>
+          <div class="big-fact reveal"><strong data-count="5" data-suffix="M+">0</strong><p>Solar installations in the United States as of 2024, the large majority of them on home rooftops.</p><a href="#src-seia">SEIA</a></div>
+          <div class="big-fact reveal"><strong data-count="0.5" data-decimals="1" data-suffix="%">0</strong><p>Median yearly output loss for solar panels in field studies — they keep producing for decades.</p><a href="#src-nrel">NREL</a></div>
+          <div class="big-fact reveal"><strong data-count="4.1" data-decimals="1" data-suffix="%">0</strong><p>Average sale-price premium for homes with solar in a 2019 national analysis.</p><a href="#src-zillow">Zillow</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sources-section" id="sources">
+      <div class="container narrow">
+        <span class="eyebrow">Sources</span>
+        <h2>Where our numbers <em>come from</em></h2>
+        <p class="muted">We use public data from government agencies and established research organisations. Calculator figures are estimates, not a quote; actual savings and impact vary by location, roof, usage, utility rates and local grid mix.</p>
+        <ol class="sources-list">
+          <li id="src-eia"><strong>U.S. Energy Information Administration</strong> — average residential electricity price 16.5¢/kWh (up from 16.0¢ in 2023) and 865 kWh/month per customer in 2024. <a href="https://www.eia.gov/todayinenergy/detail.php?id=65244" target="_blank" rel="noopener">eia.gov</a></li>
+          <li id="src-epa"><strong>U.S. EPA, Greenhouse Gas Equivalencies Calculator</strong> — 3.94×10⁻⁴ t CO₂/kWh (eGRID national average, incl. line losses), 4.29 t CO₂e per passenger vehicle per year, 0.060 t CO₂ per urban tree seedling per year (10-year growth), 8.887×10⁻³ t CO₂ per gallon of gasoline. <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references" target="_blank" rel="noopener">epa.gov</a></li>
+          <li id="src-irena"><strong>IRENA, Renewable Power Generation Costs in 2023</strong> — global weighted-average LCOE of utility-scale solar PV fell from $0.460/kWh (2010) to $0.044/kWh (2023). <a href="https://www.irena.org/Publications/2024/Sep/Renewable-Power-Generation-Costs-in-2023" target="_blank" rel="noopener">irena.org</a></li>
+          <li id="src-seia"><strong>Solar Energy Industries Association</strong> — the US surpassed 5 million solar installations in 2024. <a href="https://www.seia.org/solar-installations" target="_blank" rel="noopener">seia.org</a></li>
+          <li id="src-zillow"><strong>Zillow Research</strong> — homes with solar sold for 4.1% more on average (2019). <a href="https://www.zillow.com/research/solar-panels-house-sell-more-23798/" target="_blank" rel="noopener">zillow.com</a></li>
+          <li id="src-nrel"><strong>NREL, Jordan &amp; Kurtz, "Photovoltaic Degradation Rates — An Analytical Review"</strong> — median degradation of 0.5%/year across ~2,000 field measurements. <a href="https://research-hub.nrel.gov/en/publications/photovoltaic-degradation-rates-an-analytical-review-2/" target="_blank" rel="noopener">nrel.gov</a></li>
+        </ol>
+        <h3 class="method-h">Calculator method</h3>
+        <p class="muted">Annual production = (monthly bill × 12 ÷ $0.165/kWh) × 95% offset. Production declines 0.5% per year. CO₂ avoided = lifetime kWh × 0.000394 t. Equivalents use the EPA factors above. Savings assume a 2.5% yearly utility price increase, ~1,400 kWh per kW per year and ~$2,800 per kW installed — these are typical assumptions, and your advisor replaces them with figures for your home.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <img class="final-bg" src="assets/img/hero-rooftop-sunset.jpg" alt="" loading="lazy" />
+      <div class="container final-inner reveal">
+        <svg class="final-mark" aria-hidden="true"><use href="#mark" /></svg>
+        <h2>The sun's coming up tomorrow.<br /><em>Will your roof be ready?</em></h2>
+        <p>Find out what you'd save — and what you'd stop putting in the air.</p>
+        <div class="final-actions">
+          <a href="quote.html" class="btn btn-sun btn-lg">Get my free quote</a>
+          <a href="tel:+18005550199" class="btn btn-outline-light btn-lg">Call (800) 555-0199</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-top">
+      <div>
+        <h3>Ready to see your numbers?</h3>
+        <p>Free design, savings and impact report. No obligation.</p>
+      </div>
+      <form class="footer-zip" data-zip-form novalidate>
+        <label class="sr-only" for="footerZip">ZIP code</label>
+        <input id="footerZip" inputmode="numeric" maxlength="5" placeholder="Your ZIP code" autocomplete="postal-code" data-zip />
+        <button class="btn btn-sun" type="submit">Get started →</button>
+      </form>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="./" class="brand light"><svg class="brand-mark"><use href="#mark" /></svg><span>Sunvera</span></a>
+        <p>Power that rises with you. Home solar, batteries and EV charging.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="solutions.html#solar">Solar panels</a><a href="solutions.html#battery">Home batteries</a><a href="solutions.html#ev">EV charging</a><a href="solutions.html#compare">Compare systems</a>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <a href="savings.html">Savings calculator</a><a href="savings.html#financing">Financing options</a><a href="impact.html">Environmental impact</a><a href="how-it-works.html">How it works</a><a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About us</a><a href="quote.html">Get a quote</a><a href="impact.html#sources">Data sources</a>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <a href="tel:+18005550199">(800) 555-0199</a><a href="mailto:hello@sunvera.com">hello@sunvera.com</a><span>Mon–Sat · 8am–8pm</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year></span> Sunvera Energy. All rights reserved.</span>
+      <span>Estimates are not a quote; results vary by location, roof and usage. Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</span>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div><strong>Free savings estimate</strong><span>Takes 60 seconds</span></div>
+    <a href="quote.html" class="btn btn-sun btn-sm">Get started</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

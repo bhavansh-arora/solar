@@ -1,0 +1,73 @@
+<!--{"title": "The Environmental Impact of Home Solar", "description": "See how much CO₂ a home solar system keeps out of the air — for one home, a street or a whole town — using EPA emissions data. Every number is sourced.", "nav": "impact", "image": "assets/img/solar-farm-aerial.jpg"}-->
+    <section class="page-hero">
+      <img class="page-hero-bg" src="assets/img/wind-sunset.jpg" alt="Wind turbines over a field at sunset" fetchpriority="high" />
+      <div class="page-hero-shade" aria-hidden="true"></div>
+      <div class="container page-hero-inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Impact</span></nav>
+        <h1>Your roof can <em>change the air.</em></h1>
+        <p class="lede">The typical US home's electricity is responsible for about 4 tonnes of CO₂ a year. Here's what happens when that power comes from the sun instead.</p>
+      </div>
+    </section>
+
+    <section class="impact" id="impact">
+      <img class="impact-bg" src="assets/img/solar-farm-aerial.jpg" alt="" loading="lazy" />
+      <div class="impact-shade" aria-hidden="true"></div>
+      <div class="container impact-inner">
+        <div class="section-head reveal">
+          <span class="eyebrow light">Impact calculator</span>
+          <h2>One roof is a start. <em>A street is a movement.</em></h2>
+        </div>
+        <div class="mini-slider reveal">
+          <label for="bill">Your average monthly electric bill: <strong>$<span data-bill-out>140</span></strong></label>
+          <input type="range" id="bill" min="50" max="600" step="10" value="140" data-bill />
+        </div>
+{{> impact-scaler}}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="reveal">
+          <span class="eyebrow">Why it matters</span>
+          <h2>Electricity is a <em>big slice</em> of a home's footprint</h2>
+          <p>The EPA's national average grid emissions factor works out to about 0.39 kg of CO₂ for every kilowatt-hour delivered to a home. With the average US household using 865 kWh a month (EIA, 2024), that's roughly <strong>4.1 tonnes of CO₂ a year</strong>, just from electricity.</p>
+          <p>Solar panels produce electricity with no emissions while they run. Every kilowatt-hour they make is one the grid doesn't have to generate.</p>
+        </div>
+        <figure class="framed reveal"><img src="assets/img/seedling.jpg" alt="Hands holding a young seedling" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The bigger picture</span>
+          <h2>Solar has gone <em>mainstream</em></h2>
+        </div>
+        <div class="big-facts">
+          <div class="big-fact reveal"><strong data-count="90" data-suffix="%">0</strong><p>Drop in the global average cost of utility-scale solar electricity between 2010 and 2023 — from $0.460 to $0.044 per kWh.</p><a href="#src-irena">IRENA</a></div>
+          <div class="big-fact reveal"><strong data-count="5" data-suffix="M+">0</strong><p>Solar installations in the United States as of 2024, the large majority of them on home rooftops.</p><a href="#src-seia">SEIA</a></div>
+          <div class="big-fact reveal"><strong data-count="0.5" data-decimals="1" data-suffix="%">0</strong><p>Median yearly output loss for solar panels in field studies — they keep producing for decades.</p><a href="#src-nrel">NREL</a></div>
+          <div class="big-fact reveal"><strong data-count="4.1" data-decimals="1" data-suffix="%">0</strong><p>Average sale-price premium for homes with solar in a 2019 national analysis.</p><a href="#src-zillow">Zillow</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sources-section" id="sources">
+      <div class="container narrow">
+        <span class="eyebrow">Sources</span>
+        <h2>Where our numbers <em>come from</em></h2>
+        <p class="muted">We use public data from government agencies and established research organisations. Calculator figures are estimates, not a quote; actual savings and impact vary by location, roof, usage, utility rates and local grid mix.</p>
+        <ol class="sources-list">
+          <li id="src-eia"><strong>U.S. Energy Information Administration</strong> — average residential electricity price 16.5¢/kWh (up from 16.0¢ in 2023) and 865 kWh/month per customer in 2024. <a href="https://www.eia.gov/todayinenergy/detail.php?id=65244" target="_blank" rel="noopener">eia.gov</a></li>
+          <li id="src-epa"><strong>U.S. EPA, Greenhouse Gas Equivalencies Calculator</strong> — 3.94×10⁻⁴ t CO₂/kWh (eGRID national average, incl. line losses), 4.29 t CO₂e per passenger vehicle per year, 0.060 t CO₂ per urban tree seedling per year (10-year growth), 8.887×10⁻³ t CO₂ per gallon of gasoline. <a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references" target="_blank" rel="noopener">epa.gov</a></li>
+          <li id="src-irena"><strong>IRENA, Renewable Power Generation Costs in 2023</strong> — global weighted-average LCOE of utility-scale solar PV fell from $0.460/kWh (2010) to $0.044/kWh (2023). <a href="https://www.irena.org/Publications/2024/Sep/Renewable-Power-Generation-Costs-in-2023" target="_blank" rel="noopener">irena.org</a></li>
+          <li id="src-seia"><strong>Solar Energy Industries Association</strong> — the US surpassed 5 million solar installations in 2024. <a href="https://www.seia.org/solar-installations" target="_blank" rel="noopener">seia.org</a></li>
+          <li id="src-zillow"><strong>Zillow Research</strong> — homes with solar sold for 4.1% more on average (2019). <a href="https://www.zillow.com/research/solar-panels-house-sell-more-23798/" target="_blank" rel="noopener">zillow.com</a></li>
+          <li id="src-nrel"><strong>NREL, Jordan &amp; Kurtz, "Photovoltaic Degradation Rates — An Analytical Review"</strong> — median degradation of 0.5%/year across ~2,000 field measurements. <a href="https://research-hub.nrel.gov/en/publications/photovoltaic-degradation-rates-an-analytical-review-2/" target="_blank" rel="noopener">nrel.gov</a></li>
+        </ol>
+        <h3 class="method-h">Calculator method</h3>
+        <p class="muted">Annual production = (monthly bill × 12 ÷ $0.165/kWh) × 95% offset. Production declines 0.5% per year. CO₂ avoided = lifetime kWh × 0.000394 t. Equivalents use the EPA factors above. Savings assume a 2.5% yearly utility price increase, ~1,400 kWh per kW per year and ~$2,800 per kW installed — these are typical assumptions, and your advisor replaces them with figures for your home.</p>
+      </div>
+    </section>
+
+{{> cta}}

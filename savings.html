@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar Savings Calculator & Financing · Sunvera Solar</title>
+  <meta name="description" content="Estimate your 25-year solar savings, payback period and system size, and compare cash, loan and lease options for home solar." />
+  <meta name="theme-color" content="#0B1B2B" />
+  <link rel="canonical" href="https://solar.codebunny.net/savings.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sunvera Solar" />
+  <meta property="og:title" content="Solar Savings Calculator & Financing · Sunvera Solar" />
+  <meta property="og:description" content="Estimate your 25-year solar savings, payback period and system size, and compare cash, loan and lease options for home solar." />
+  <meta property="og:image" content="https://solar.codebunny.net/assets/img/panels-sky.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#top">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="sunGrad" x1="6" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFD15C" /><stop offset="1" stop-color="#FF6B3D" />
+      </linearGradient>
+      <symbol id="mark" viewBox="0 0 48 48">
+        <path d="M6 30a18 18 0 0 1 36 0Z" fill="url(#sunGrad)" />
+        <g stroke="#FFB020" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M24 3v4" /><path d="M8.4 9.4l2.8 2.8" /><path d="M39.6 9.4l-2.8 2.8" /><path d="M2 21h4" /><path d="M42 21h4" />
+        </g>
+        <path d="M4 34h40M9 39.5h30M15 45h18" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="nav on-dark" id="nav">
+    <div class="container nav-inner">
+      <a href="./" class="brand" aria-label="Sunvera home">
+        <svg class="brand-mark"><use href="#mark" /></svg>
+        <span>Sunvera</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="solutions.html" data-nav="solutions">Solutions</a>
+        <a href="savings.html" data-nav="savings" aria-current="page">Savings</a>
+        <a href="impact.html" data-nav="impact">Impact</a>
+        <a href="how-it-works.html" data-nav="how">How it works</a>
+        <a href="about.html" data-nav="about">About</a>
+        <a href="faq.html" data-nav="faq">FAQ</a>
+        <a href="quote.html" class="btn btn-sun nav-menu-cta">Get my free quote</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="tel:+18005550199" class="nav-phone">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1Z"/></svg>
+          (800) 555-0199
+        </a>
+        <a href="quote.html" class="btn btn-sun btn-sm">Get my free quote</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+<section class="page-hero">
+      <img class="page-hero-bg" src="assets/img/panels-sky.jpg" alt="Rows of solar panels under a bright sky" fetchpriority="high" />
+      <div class="page-hero-shade" aria-hidden="true"></div>
+      <div class="container page-hero-inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Savings &amp; financing</span></nav>
+        <h1>Real numbers, <em>not sales talk.</em></h1>
+        <p class="lede">Estimate what solar would save you using public data, then compare the ways to pay for it. No email required.</p>
+        <div class="jump-links"><a href="#calculator">Calculator</a><a href="#how-savings">How savings work</a><a href="#financing">Financing</a></div>
+      </div>
+    </section>
+
+    <section class="section calc" id="calculator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow light">Savings &amp; impact calculator</span>
+          <h2>What could <em>your</em> roof do?</h2>
+          <p>Drag the slider to your average monthly electric bill.</p>
+        </div>
+        <div class="calc-card reveal">
+          <div class="calc-input">
+            <label for="bill">Average monthly electric bill</label>
+            <div class="bill-value">$<span data-bill-out>140</span><small>/mo</small></div>
+            <input type="range" id="bill" min="50" max="600" step="10" value="140" data-bill aria-describedby="billHelp" />
+            <div class="range-scale" id="billHelp"><span>$50</span><span>$600+</span></div>
+
+            <div class="seg calc-toggle" role="radiogroup" aria-label="Include battery">
+              <button type="button" class="active" data-battery="0" role="radio" aria-checked="true">Solar only</button>
+              <button type="button" data-battery="1" role="radio" aria-checked="false">Solar + Battery</button>
+            </div>
+
+            <ul class="calc-impact">
+              <li><span class="ci-icon" aria-hidden="true">🌱</span><div><strong data-out="trees">0</strong> tree seedlings grown for 10 years</div></li>
+              <li><span class="ci-icon" aria-hidden="true">🚗</span><div><strong data-out="cars">0</strong> cars off the road for a year</div></li>
+              <li><span class="ci-icon" aria-hidden="true">⛽</span><div><strong data-out="gallons">0</strong> gallons of gasoline not burned</div></li>
+            </ul>
+            <p class="calc-impact-note">Equivalent CO₂ over 25 years · <a href="impact.html#sources">EPA factors</a></p>
+          </div>
+          <div class="calc-results">
+            <div class="big-result">
+              <span>Estimated 25-year savings</span>
+              <strong>$<span data-out="net">0</span></strong>
+            </div>
+            <div class="result-grid">
+              <div><span>System size</span><strong><span data-out="kw">0</span> kW</strong></div>
+              <div><span>Panels</span><strong data-out="panels">0</strong></div>
+              <div><span>Payback</span><strong><span data-out="payback">0</span> yrs</strong></div>
+              <div><span>CO₂ avoided (25 yrs)</span><strong><span data-out="co2">0</span> t</strong></div>
+            </div>
+            <a href="quote.html" class="btn btn-sun btn-block"><span>Get my exact numbers</span></a>
+            <p class="micro center">Uses EIA's 2024 average price (16.5¢/kWh) and typical production. Your designer confirms exact numbers for your roof.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="how-savings">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How savings work</span>
+          <h2>Where the money <em>comes from</em></h2>
+          <p>Solar saves money in three ways. How much each one matters depends on your utility's rules.</p>
+        </div>
+        <div class="explain-grid">
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">☀️</div>
+            <h3>1. You buy less power</h3>
+            <p>Every kilowatt-hour your panels produce while you're using it is one you don't buy from the utility. At EIA's 2024 average of 16.5¢/kWh, that adds up quickly.</p>
+          </div>
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">🔁</div>
+            <h3>2. Credit for extra power</h3>
+            <p>Many utilities offer net metering or export credits for the surplus you send to the grid at midday. Rules and credit values vary by state and utility.</p>
+          </div>
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">🔋</div>
+            <h3>3. Dodge peak prices</h3>
+            <p>On time-of-use plans, a battery lets you use stored solar in the evening when grid power costs the most.</p>
+          </div>
+        </div>
+
+        <div class="flow reveal" aria-label="How power flows in a solar home">
+          <div class="flow-node"><span>☀️</span><strong>Panels</strong><small>make DC power</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node"><span>⚡</span><strong>Inverter</strong><small>converts to AC</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node hl"><span>🏡</span><strong>Your home</strong><small>uses it first</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node"><span>🔋</span><strong>Battery / grid</strong><small>stores or exports the extra</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="financing">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Financing</span>
+          <h2>Three ways to <em>go solar</em></h2>
+          <p>Your advisor shows all three side by side with real numbers for your home.</p>
+        </div>
+        <div class="fin-grid">
+          <article class="fin reveal">
+            <h3>Cash</h3>
+            <p class="fin-tag">Highest lifetime savings</p>
+            <ul class="pc">
+              <li class="pro">You own the system from day one</li>
+              <li class="pro">Fastest payback, biggest long-term return</li>
+              <li class="pro">Any incentives you qualify for go to you</li>
+              <li class="con">Largest upfront cost</li>
+            </ul>
+          </article>
+          <article class="fin featured reveal">
+            <h3>Solar loan</h3>
+            <p class="fin-tag">Own it with $0 down</p>
+            <ul class="pc">
+              <li class="pro">$0-down options available</li>
+              <li class="pro">You own the system and its value</li>
+              <li class="pro">Payment can be close to your current bill</li>
+              <li class="con">Interest reduces total savings vs. cash</li>
+            </ul>
+          </article>
+          <article class="fin reveal">
+            <h3>Lease / PPA</h3>
+            <p class="fin-tag">Lowest commitment</p>
+            <ul class="pc">
+              <li class="pro">Little or nothing upfront</li>
+              <li class="pro">Maintenance typically included</li>
+              <li class="con">You don't own the system</li>
+              <li class="con">Smaller savings; contract transfers on sale</li>
+            </ul>
+          </article>
+        </div>
+        <p class="fineprint reveal">Availability, rates and terms depend on credit approval and location. Incentive programs change often — your advisor checks what applies at your address.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <img class="final-bg" src="assets/img/hero-rooftop-sunset.jpg" alt="" loading="lazy" />
+      <div class="container final-inner reveal">
+        <svg class="final-mark" aria-hidden="true"><use href="#mark" /></svg>
+        <h2>The sun's coming up tomorrow.<br /><em>Will your roof be ready?</em></h2>
+        <p>Find out what you'd save — and what you'd stop putting in the air.</p>
+        <div class="final-actions">
+          <a href="quote.html" class="btn btn-sun btn-lg">Get my free quote</a>
+          <a href="tel:+18005550199" class="btn btn-outline-light btn-lg">Call (800) 555-0199</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-top">
+      <div>
+        <h3>Ready to see your numbers?</h3>
+        <p>Free design, savings and impact report. No obligation.</p>
+      </div>
+      <form class="footer-zip" data-zip-form novalidate>
+        <label class="sr-only" for="footerZip">ZIP code</label>
+        <input id="footerZip" inputmode="numeric" maxlength="5" placeholder="Your ZIP code" autocomplete="postal-code" data-zip />
+        <button class="btn btn-sun" type="submit">Get started →</button>
+      </form>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="./" class="brand light"><svg class="brand-mark"><use href="#mark" /></svg><span>Sunvera</span></a>
+        <p>Power that rises with you. Home solar, batteries and EV charging.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="solutions.html#solar">Solar panels</a><a href="solutions.html#battery">Home batteries</a><a href="solutions.html#ev">EV charging</a><a href="solutions.html#compare">Compare systems</a>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <a href="savings.html">Savings calculator</a><a href="savings.html#financing">Financing options</a><a href="impact.html">Environmental impact</a><a href="how-it-works.html">How it works</a><a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About us</a><a href="quote.html">Get a quote</a><a href="impact.html#sources">Data sources</a>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <a href="tel:+18005550199">(800) 555-0199</a><a href="mailto:hello@sunvera.com">hello@sunvera.com</a><span>Mon–Sat · 8am–8pm</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year></span> Sunvera Energy. All rights reserved.</span>
+      <span>Estimates are not a quote; results vary by location, roof and usage. Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</span>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div><strong>Free savings estimate</strong><span>Takes 60 seconds</span></div>
+    <a href="quote.html" class="btn btn-sun btn-sm">Get started</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

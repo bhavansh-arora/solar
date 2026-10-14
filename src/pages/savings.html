@@ -1,0 +1,95 @@
+<!--{"title": "Solar Savings Calculator & Financing", "description": "Estimate your 25-year solar savings, payback period and system size, and compare cash, loan and lease options for home solar.", "nav": "savings", "image": "assets/img/panels-sky.jpg"}-->
+    <section class="page-hero">
+      <img class="page-hero-bg" src="assets/img/panels-sky.jpg" alt="Rows of solar panels under a bright sky" fetchpriority="high" />
+      <div class="page-hero-shade" aria-hidden="true"></div>
+      <div class="container page-hero-inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Savings &amp; financing</span></nav>
+        <h1>Real numbers, <em>not sales talk.</em></h1>
+        <p class="lede">Estimate what solar would save you using public data, then compare the ways to pay for it. No email required.</p>
+        <div class="jump-links"><a href="#calculator">Calculator</a><a href="#how-savings">How savings work</a><a href="#financing">Financing</a></div>
+      </div>
+    </section>
+
+{{> calculator}}
+
+    <section class="section" id="how-savings">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How savings work</span>
+          <h2>Where the money <em>comes from</em></h2>
+          <p>Solar saves money in three ways. How much each one matters depends on your utility's rules.</p>
+        </div>
+        <div class="explain-grid">
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">☀️</div>
+            <h3>1. You buy less power</h3>
+            <p>Every kilowatt-hour your panels produce while you're using it is one you don't buy from the utility. At EIA's 2024 average of 16.5¢/kWh, that adds up quickly.</p>
+          </div>
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">🔁</div>
+            <h3>2. Credit for extra power</h3>
+            <p>Many utilities offer net metering or export credits for the surplus you send to the grid at midday. Rules and credit values vary by state and utility.</p>
+          </div>
+          <div class="explain reveal">
+            <div class="ex-icon" aria-hidden="true">🔋</div>
+            <h3>3. Dodge peak prices</h3>
+            <p>On time-of-use plans, a battery lets you use stored solar in the evening when grid power costs the most.</p>
+          </div>
+        </div>
+
+        <div class="flow reveal" aria-label="How power flows in a solar home">
+          <div class="flow-node"><span>☀️</span><strong>Panels</strong><small>make DC power</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node"><span>⚡</span><strong>Inverter</strong><small>converts to AC</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node hl"><span>🏡</span><strong>Your home</strong><small>uses it first</small></div>
+          <div class="flow-arrow" aria-hidden="true"></div>
+          <div class="flow-node"><span>🔋</span><strong>Battery / grid</strong><small>stores or exports the extra</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="financing">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Financing</span>
+          <h2>Three ways to <em>go solar</em></h2>
+          <p>Your advisor shows all three side by side with real numbers for your home.</p>
+        </div>
+        <div class="fin-grid">
+          <article class="fin reveal">
+            <h3>Cash</h3>
+            <p class="fin-tag">Highest lifetime savings</p>
+            <ul class="pc">
+              <li class="pro">You own the system from day one</li>
+              <li class="pro">Fastest payback, biggest long-term return</li>
+              <li class="pro">Any incentives you qualify for go to you</li>
+              <li class="con">Largest upfront cost</li>
+            </ul>
+          </article>
+          <article class="fin featured reveal">
+            <h3>Solar loan</h3>
+            <p class="fin-tag">Own it with $0 down</p>
+            <ul class="pc">
+              <li class="pro">$0-down options available</li>
+              <li class="pro">You own the system and its value</li>
+              <li class="pro">Payment can be close to your current bill</li>
+              <li class="con">Interest reduces total savings vs. cash</li>
+            </ul>
+          </article>
+          <article class="fin reveal">
+            <h3>Lease / PPA</h3>
+            <p class="fin-tag">Lowest commitment</p>
+            <ul class="pc">
+              <li class="pro">Little or nothing upfront</li>
+              <li class="pro">Maintenance typically included</li>
+              <li class="con">You don't own the system</li>
+              <li class="con">Smaller savings; contract transfers on sale</li>
+            </ul>
+          </article>
+        </div>
+        <p class="fineprint reveal">Availability, rates and terms depend on credit approval and location. Incentive programs change often — your advisor checks what applies at your address.</p>
+      </div>
+    </section>
+
+{{> cta}}

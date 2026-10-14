@@ -1,0 +1,43 @@
+    <section class="section calc" id="calculator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow light">Savings &amp; impact calculator</span>
+          <h2>What could <em>your</em> roof do?</h2>
+          <p>Drag the slider to your average monthly electric bill.</p>
+        </div>
+        <div class="calc-card reveal">
+          <div class="calc-input">
+            <label for="bill">Average monthly electric bill</label>
+            <div class="bill-value">$<span data-bill-out>140</span><small>/mo</small></div>
+            <input type="range" id="bill" min="50" max="600" step="10" value="140" data-bill aria-describedby="billHelp" />
+            <div class="range-scale" id="billHelp"><span>$50</span><span>$600+</span></div>
+
+            <div class="seg calc-toggle" role="radiogroup" aria-label="Include battery">
+              <button type="button" class="active" data-battery="0" role="radio" aria-checked="true">Solar only</button>
+              <button type="button" data-battery="1" role="radio" aria-checked="false">Solar + Battery</button>
+            </div>
+
+            <ul class="calc-impact">
+              <li><span class="ci-icon" aria-hidden="true">🌱</span><div><strong data-out="trees">0</strong> tree seedlings grown for 10 years</div></li>
+              <li><span class="ci-icon" aria-hidden="true">🚗</span><div><strong data-out="cars">0</strong> cars off the road for a year</div></li>
+              <li><span class="ci-icon" aria-hidden="true">⛽</span><div><strong data-out="gallons">0</strong> gallons of gasoline not burned</div></li>
+            </ul>
+            <p class="calc-impact-note">Equivalent CO₂ over 25 years · <a href="impact.html#sources">EPA factors</a></p>
+          </div>
+          <div class="calc-results">
+            <div class="big-result">
+              <span>Estimated 25-year savings</span>
+              <strong>$<span data-out="net">0</span></strong>
+            </div>
+            <div class="result-grid">
+              <div><span>System size</span><strong><span data-out="kw">0</span> kW</strong></div>
+              <div><span>Panels</span><strong data-out="panels">0</strong></div>
+              <div><span>Payback</span><strong><span data-out="payback">0</span> yrs</strong></div>
+              <div><span>CO₂ avoided (25 yrs)</span><strong><span data-out="co2">0</span> t</strong></div>
+            </div>
+            <a href="quote.html" class="btn btn-sun btn-block"><span>Get my exact numbers</span></a>
+            <p class="micro center">Uses EIA's 2024 average price (16.5¢/kWh) and typical production. Your designer confirms exact numbers for your roof.</p>
+          </div>
+        </div>
+      </div>
+    </section>

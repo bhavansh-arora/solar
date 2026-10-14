@@ -4,17 +4,26 @@
   const fmt = (n, d = 0) => Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  $('#year').textContent = new Date().getFullYear();
+  // Session storage carries the visitor's estimate between pages (fails safely if blocked).
+  const store = {
+    get(k) { try { return JSON.parse(sessionStorage.getItem('sunvera:' + k)); } catch { return null; } },
+    set(k, v) { try { sessionStorage.setItem('sunvera:' + k, JSON.stringify(v)); } catch { /* ignore */ } },
+  };
+
+  $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   /* ---------- Nav: scrolled state, mobile menu, sticky CTA ---------- */
   const nav = $('#nav');
   const sticky = $('#stickyCta');
-  const quote = $('#quote');
+  const formCard = $('#formCard');
   const onScroll = () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
-    const q = quote.getBoundingClientRect();
-    const nearQuote = q.top < window.innerHeight && q.bottom > 0;
-    sticky.classList.toggle('show', window.scrollY > 600 && !nearQuote);
+    let nearForm = false;
+    if (formCard) {
+      const r = formCard.getBoundingClientRect();
+      nearForm = r.top < window.innerHeight && r.bottom > 0;
+    }
+    sticky.classList.toggle('show', window.scrollY > 600 && !nearForm);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -28,9 +37,11 @@
   };
   burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
   $$('a', links).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
   /* ---------- Animated numbers ---------- */
   const tween = (el, to, { decimals = 0, prefix = '', suffix = '', dur = 1400 } = {}) => {
+    if (!el) return;
     const from = parseFloat(el.dataset.current || '0');
     el.dataset.current = to;
     if (reduceMotion) { el.textContent = prefix + fmt(to, decimals) + suffix; return; }
@@ -54,16 +65,16 @@
       }));
       io.unobserve(e.target);
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   $$('.reveal').forEach((el) => io.observe(el));
 
   /* ---------- Savings + impact model ----------
-     Public inputs (see #sources on the page):
+     Public inputs (cited on impact.html#sources):
      - EIA 2024 avg residential price: 16.5¢/kWh
      - NREL median module degradation: 0.5%/yr
      - EPA: 3.94e-4 t CO2/kWh (eGRID national average), 4.29 t CO2e per car-year,
             0.060 t CO2 per seedling-year (10-yr growth), 8.887e-3 t CO2 per gallon of gasoline
-     Assumptions (edit for your market): production per kW, installed cost, rate escalation. */
+     Assumptions (tune for your market): production per kW, installed cost, rate escalation. */
   const PRICE = 0.165;
   const DEGRADATION = 0.005;
   const RATE_ESCALATION = 0.025;
@@ -76,18 +87,11 @@
   const YEARS = 25;
   const EPA = { co2PerKwh: 3.94e-4, car: 4.29, seedling10yr: 0.060 * 10, gallon: 8.887e-3 };
 
-  const bill = $('#bill');
-  let battery = false;
-  let homes = 1;
-  let model = {};
-
-  const compute = () => {
-    const b = +bill.value;
-    const annualKwh = (b * 12 / PRICE) * OFFSET;
+  const compute = (bill, battery) => {
+    const annualKwh = (bill * 12 / PRICE) * OFFSET;
     const kw = annualKwh / KWH_PER_KW;
     const cost = kw * COST_PER_KW + (battery ? BATTERY_COST : 0);
     const valueShare = 1 + (battery ? BATTERY_VALUE : 0);
-
     let lifetimeKwh = 0, savings = 0, payback = 0;
     for (let y = 0; y < YEARS; y++) {
       const kwh = annualKwh * Math.pow(1 - DEGRADATION, y);
@@ -97,53 +101,129 @@
     }
     const co2 = lifetimeKwh * EPA.co2PerKwh;
     return {
-      b, kw, panels: Math.ceil((kw * 1000) / PANEL_W), payback,
+      bill, battery, kw, panels: Math.ceil((kw * 1000) / PANEL_W), payback,
       net: Math.max(savings - cost, 0), lifetimeKwh, co2,
       trees: co2 / EPA.seedling10yr, cars: co2 / EPA.car, gallons: co2 / EPA.gallon,
     };
   };
 
-  const renderCalc = () => {
-    model = compute();
-    const pct = ((model.b - bill.min) / (bill.max - bill.min)) * 100;
-    bill.style.setProperty('--p', pct + '%');
-    $('#billOut').textContent = model.b >= 600 ? '600+' : model.b;
-    const opts = { dur: 500 };
-    tween($('#savings25'), model.net, opts);
-    tween($('#sysKw'), model.kw, { ...opts, decimals: 1 });
-    $('#panels').textContent = model.panels;
-    $('#payback').textContent = model.payback || '25+';
-    tween($('#co2'), model.co2, opts);
-    tween($('#ciTrees'), model.trees, opts);
-    tween($('#ciCars'), model.cars, { ...opts, decimals: 1 });
-    tween($('#ciGas'), model.gallons, opts);
-    renderImpact(500);
+  const saved = store.get('estimate') || {};
+  const state = { bill: saved.bill || 140, battery: !!saved.battery, homes: 1, model: null };
+  const billInput = $('[data-bill]');
+
+  const renderAll = (dur = 500) => {
+    const m = state.model = compute(state.bill, state.battery);
+    store.set('estimate', { bill: m.bill, battery: m.battery, kw: +m.kw.toFixed(1), co2: Math.round(m.co2) });
+
+    if (billInput) {
+      const pct = ((m.bill - billInput.min) / (billInput.max - billInput.min)) * 100;
+      billInput.style.setProperty('--p', pct + '%');
+    }
+    $$('[data-bill-out]').forEach((el) => { el.textContent = m.bill >= 600 ? '600+' : m.bill; });
+
+    const out = (k) => $(`[data-out="${k}"]`);
+    tween(out('net'), m.net, { dur });
+    tween(out('kw'), m.kw, { dur, decimals: 1 });
+    if (out('panels')) out('panels').textContent = m.panels;
+    if (out('payback')) out('payback').textContent = m.payback || '25+';
+    tween(out('co2'), m.co2, { dur });
+    tween(out('trees'), m.trees, { dur });
+    tween(out('cars'), m.cars, { dur, decimals: 1 });
+    tween(out('gallons'), m.gallons, { dur });
+    renderImpact(dur);
   };
 
   const renderImpact = (dur = 900) => {
-    const n = homes;
-    const small = model.co2 * n < 1000;
-    tween($('#imCo2'), model.co2 * n, { dur, decimals: small ? 0 : 0 });
-    tween($('#imTrees'), model.trees * n, { dur });
-    tween($('#imCars'), model.cars * n, { dur, decimals: model.cars * n < 100 ? 1 : 0 });
-    tween($('#imMwh'), (model.lifetimeKwh / 1000) * n, { dur });
+    const m = state.model, n = state.homes;
+    const imp = (k) => $(`[data-impact="${k}"]`);
+    tween(imp('co2'), m.co2 * n, { dur });
+    tween(imp('trees'), m.trees * n, { dur });
+    tween(imp('cars'), m.cars * n, { dur, decimals: m.cars * n < 100 ? 1 : 0 });
+    tween(imp('mwh'), (m.lifetimeKwh / 1000) * n, { dur });
   };
 
-  bill.addEventListener('input', renderCalc);
+  const radioGroup = (selector, onPick) => {
+    const all = $$(selector);
+    all.forEach((btn) => btn.addEventListener('click', () => {
+      all.forEach((b) => { b.classList.toggle('active', b === btn); b.setAttribute('aria-checked', String(b === btn)); });
+      onPick(btn);
+    }));
+  };
 
-  const radioGroup = (selector, onPick) => $$(selector).forEach((btn, _, all) => btn.addEventListener('click', () => {
-    all.forEach((b) => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-checked', 'true');
-    onPick(btn);
+  if (billInput || $('[data-impact]')) {
+    if (billInput) {
+      billInput.value = state.bill;
+      billInput.addEventListener('input', () => { state.bill = +billInput.value; renderAll(); });
+    }
+    $$('.calc-toggle button').forEach((b) => {
+      const on = (b.dataset.battery === '1') === state.battery;
+      b.classList.toggle('active', on); b.setAttribute('aria-checked', String(on));
+    });
+    radioGroup('.calc-toggle button', (btn) => { state.battery = btn.dataset.battery === '1'; renderAll(); });
+    radioGroup('.scale-toggle button', (btn) => { state.homes = +btn.dataset.homes; renderImpact(); });
+    renderAll(0);
+  }
+
+  /* ---------- ZIP forms → quote page ---------- */
+  $$('[data-zip]').forEach((z) => z.addEventListener('input', () => { z.value = z.value.replace(/\D/g, '').slice(0, 5); }));
+  $$('[data-zip-form]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = $('[data-zip]', f);
+    const zip = input.value.trim();
+    if (!/^\d{5}$/.test(zip)) {
+      f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
+      input.focus();
+      return;
+    }
+    window.location.href = 'quote.html?zip=' + zip;
   }));
-  radioGroup('.calc-toggle button', (btn) => { battery = btn.dataset.battery === '1'; renderCalc(); });
-  radioGroup('.scale-toggle button', (btn) => { homes = +btn.dataset.homes; renderImpact(); });
 
-  renderCalc();
+  /* ---------- FAQ page: search + active topic ---------- */
+  const faqSearch = $('#faqSearch');
+  if (faqSearch) {
+    faqSearch.addEventListener('input', () => {
+      const q = faqSearch.value.trim().toLowerCase();
+      let any = false;
+      $$('.faq-group').forEach((g) => {
+        let groupHit = false;
+        $$('details', g).forEach((d) => {
+          const hit = !q || d.textContent.toLowerCase().includes(q);
+          d.hidden = !hit;
+          if (hit && q) d.open = true;
+          groupHit = groupHit || hit;
+        });
+        g.hidden = !groupHit;
+        any = any || groupHit;
+      });
+      $('#faqEmpty').hidden = any;
+    });
+    const catLinks = $$('.faq-cats a');
+    const groupIo = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) catLinks.forEach((a) => a.classList.toggle('active', a.hash === '#' + en.target.id));
+    }), { rootMargin: '-40% 0px -55% 0px' });
+    $$('.faq-group').forEach((g) => groupIo.observe(g));
+  }
 
-  /* ---------- Multi-step lead form ---------- */
+  /* ---------- Quote page: multi-step lead form ---------- */
   const form = $('#leadForm');
+  if (!form) return;
+
+  const params = new URLSearchParams(location.search);
+  if (/^\d{5}$/.test(params.get('zip') || '')) $('#zip').value = params.get('zip');
+  const planParam = params.get('plan');
+  if (planParam) {
+    const radio = $$('input[name=plan]', form).find((r) => r.value === planParam);
+    if (radio) radio.checked = true;
+  }
+  const est = store.get('estimate');
+  if (est && est.bill) {
+    $('#billAmt').value = est.bill;
+    $('#ecBill').textContent = est.bill;
+    $('#ecKw').textContent = est.kw;
+    $('#ecCo2').textContent = fmt(est.co2);
+    $('#estimateChip').hidden = false;
+  }
+
   const steps = $$('.fstep', form);
   const nextBtn = $('#nextBtn');
   const backBtn = $('#backBtn');
@@ -158,6 +238,8 @@
     backBtn.hidden = i === 0;
     nextBtn.textContent = i === steps.length - 1 ? 'Get my free plan ☀' : 'Continue →';
     errorEl.textContent = '';
+    const first = $('input:not([type=hidden])', steps[i]);
+    if (first && i > 0 && first.type !== 'radio') first.focus({ preventScroll: true });
   };
 
   const validate = () => {
@@ -176,6 +258,7 @@
       let valid = inp.value.trim() !== '';
       if (inp.type === 'email') valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim());
       if (inp.name === 'zip') valid = /^\d{5}$/.test(inp.value.trim());
+      if (inp.name === 'monthlyBill') valid = +inp.value > 0;
       if (inp.type === 'tel') valid = inp.value.replace(/\D/g, '').length >= 10;
       inp.classList.toggle('invalid', !valid);
       if (!valid) ok = false;
@@ -190,6 +273,13 @@
     setTimeout(() => { if (validate() && current < steps.length - 1) showStep(current + 1); }, 220);
   }));
   $$('.input', form).forEach((inp) => inp.addEventListener('input', () => inp.classList.remove('invalid')));
+  $('#billAmt').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4); });
+  $('#zip').addEventListener('input', (e) => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5); });
+  $('#phone').addEventListener('input', (e) => {
+    const d = e.target.value.replace(/\D/g, '').slice(0, 10);
+    e.target.value = d.length > 6 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`
+      : d.length > 3 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : d;
+  });
 
   backBtn.addEventListener('click', () => showStep(Math.max(current - 1, 0)));
   form.addEventListener('submit', (e) => {
@@ -198,7 +288,8 @@
     if (current < steps.length - 1) { showStep(current + 1); return; }
 
     const data = Object.fromEntries(new FormData(form));
-    data.estimate = { monthlyBill: model.b, systemKw: +model.kw.toFixed(1), co2Tonnes25y: Math.round(model.co2), battery };
+    const m = compute(+data.monthlyBill || 140, data.plan !== 'Solar Essential' && data.plan !== 'Not sure');
+    data.estimate = { systemKw: +m.kw.toFixed(1), co2Tonnes25y: Math.round(m.co2), savings25y: Math.round(m.net) };
     // Send to your CRM / backend here, e.g.:
     // fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
     console.info('Sunvera lead captured', data);
@@ -208,30 +299,5 @@
     $('.progress').hidden = true;
     $('.form-step-label').hidden = true;
     $('#formSuccess').hidden = false;
-  });
-
-  // Phone formatting
-  $('#phone').addEventListener('input', (e) => {
-    const d = e.target.value.replace(/\D/g, '').slice(0, 10);
-    e.target.value = d.length > 6 ? `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`
-      : d.length > 3 ? `(${d.slice(0, 3)}) ${d.slice(3)}` : d;
-  });
-  $$('#zip, #heroZip').forEach((z) => z.addEventListener('input', () => { z.value = z.value.replace(/\D/g, '').slice(0, 5); }));
-
-  // Plan buttons carry the chosen plan into the form
-  $$('[data-plan]').forEach((a) => a.addEventListener('click', () => { $('#planField').value = a.dataset.plan; }));
-
-  /* ---------- Hero ZIP → prefill form ---------- */
-  $('#heroForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const zip = $('#heroZip').value.trim();
-    if (!/^\d{5}$/.test(zip)) {
-      const f = $('#heroForm');
-      f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
-      $('#heroZip').focus();
-      return;
-    }
-    $('#zip').value = zip;
-    quote.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 })();

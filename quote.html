@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Your Free Solar Quote · Sunvera Solar</title>
+  <meta name="description" content="Get a free, no-obligation solar design with your savings, payback and environmental impact. Takes about 60 seconds." />
+  <meta name="theme-color" content="#0B1B2B" />
+  <link rel="canonical" href="https://solar.codebunny.net/quote.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sunvera Solar" />
+  <meta property="og:title" content="Get Your Free Solar Quote · Sunvera Solar" />
+  <meta property="og:description" content="Get a free, no-obligation solar design with your savings, payback and environmental impact. Takes about 60 seconds." />
+  <meta property="og:image" content="https://solar.codebunny.net/assets/img/advisor.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-quote">
+  <a class="skip-link" href="#top">Skip to content</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="sunGrad" x1="6" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FFD15C" /><stop offset="1" stop-color="#FF6B3D" />
+      </linearGradient>
+      <symbol id="mark" viewBox="0 0 48 48">
+        <path d="M6 30a18 18 0 0 1 36 0Z" fill="url(#sunGrad)" />
+        <g stroke="#FFB020" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M24 3v4" /><path d="M8.4 9.4l2.8 2.8" /><path d="M39.6 9.4l-2.8 2.8" /><path d="M2 21h4" /><path d="M42 21h4" />
+        </g>
+        <path d="M4 34h40M9 39.5h30M15 45h18" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="nav on-dark" id="nav">
+    <div class="container nav-inner">
+      <a href="./" class="brand" aria-label="Sunvera home">
+        <svg class="brand-mark"><use href="#mark" /></svg>
+        <span>Sunvera</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="solutions.html" data-nav="solutions">Solutions</a>
+        <a href="savings.html" data-nav="savings">Savings</a>
+        <a href="impact.html" data-nav="impact">Impact</a>
+        <a href="how-it-works.html" data-nav="how">How it works</a>
+        <a href="about.html" data-nav="about">About</a>
+        <a href="faq.html" data-nav="faq">FAQ</a>
+        <a href="quote.html" class="btn btn-sun nav-menu-cta">Get my free quote</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="tel:+18005550199" class="nav-phone">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1Z"/></svg>
+          (800) 555-0199
+        </a>
+        <a href="quote.html" class="btn btn-sun btn-sm">Get my free quote</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+<section class="quote-page">
+      <div class="qp-bg" aria-hidden="true"><img src="assets/img/hero-rooftop-sunset.jpg" alt="" /></div>
+      <div class="container quote-grid">
+        <div class="quote-copy">
+          <nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a><span>/</span><span aria-current="page">Get a quote</span></nav>
+          <h1>Your custom solar plan in <em>60 seconds.</em></h1>
+          <p class="lede">Answer four quick questions. An energy advisor will send your personalised design, savings and impact report — no pushy sales calls.</p>
+
+          <div class="estimate-chip" id="estimateChip" hidden>
+            <span class="ec-label">Your estimate so far</span>
+            <div class="ec-vals">
+              <div><strong>$<span id="ecBill">0</span></strong><small>monthly bill</small></div>
+              <div><strong><span id="ecKw">0</span> kW</strong><small>system size</small></div>
+              <div><strong><span id="ecCo2">0</span> t</strong><small>CO₂ avoided</small></div>
+            </div>
+          </div>
+
+          <ul class="checklist light">
+            <li>Custom roof design &amp; panel layout</li>
+            <li>Monthly savings &amp; payback period</li>
+            <li>CO₂ your system would avoid</li>
+            <li>Rebates &amp; incentives at your address</li>
+          </ul>
+
+          <div class="next-steps">
+            <h2>What happens next</h2>
+            <ol>
+              <li><strong>Within one business day</strong> — your advisor reviews your roof and usage.</li>
+              <li><strong>Your report</strong> — design, savings, financing and impact, by email.</li>
+              <li><strong>A short call</strong> — at a time that suits you, to answer questions. No pressure.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="form-card" id="formCard">
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="form-step-label"><span id="stepNum">1</span> of 4</div>
+          <form id="leadForm" novalidate>
+            <fieldset class="fstep active" data-step="1">
+              <legend>Do you own your home?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="owner" value="yes" required /><span>🏡 Yes, I own it</span></label>
+                <label class="choice"><input type="radio" name="owner" value="no" /><span>🔑 No, I rent</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="2">
+              <legend>What are you interested in?</legend>
+              <div class="choices grid-2">
+                <label class="choice"><input type="radio" name="plan" value="Solar Essential" required /><span>☀️ Solar panels</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Solar + Battery" /><span>🔋 Solar + battery</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Total Home" /><span>🚗 Solar + battery + EV</span></label>
+                <label class="choice"><input type="radio" name="plan" value="Not sure" /><span>🤔 Not sure yet</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="3">
+              <legend>Where's the home?</legend>
+              <label class="input-label" for="address">Street address</label>
+              <input class="input" id="address" name="address" autocomplete="street-address" placeholder="123 Sunny Lane" required />
+              <label class="input-label" for="zip">ZIP code</label>
+              <input class="input" id="zip" name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="85001" required pattern="\d{5}" />
+              <label class="input-label" for="billAmt">Average monthly electric bill</label>
+              <div class="input-prefix"><span>$</span><input class="input" id="billAmt" name="monthlyBill" inputmode="numeric" placeholder="140" required /></div>
+            </fieldset>
+
+            <fieldset class="fstep" data-step="4">
+              <legend>Where should we send your plan?</legend>
+              <label class="input-label" for="name">Full name</label>
+              <input class="input" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              <label class="input-label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="jane@email.com" required />
+              <label class="input-label" for="phone">Phone</label>
+              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" required />
+              <p class="consent">By submitting, you agree to be contacted by Sunvera about your quote. Your details are never sold or shared.</p>
+            </fieldset>
+
+            <p class="form-error" id="formError" role="alert"></p>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-text" id="backBtn" hidden>← Back</button>
+              <button type="submit" class="btn btn-sun btn-lg" id="nextBtn">Continue →</button>
+            </div>
+          </form>
+
+          <div class="form-success" id="formSuccess" hidden>
+            <div class="success-sun"><svg><use href="#mark" /></svg></div>
+            <h3>Thanks, <span id="successName">friend</span>! ☀️</h3>
+            <p>Your advisor is designing your system now. Expect your custom savings and impact report within one business day.</p>
+            <div class="success-links">
+              <a href="impact.html" class="btn btn-ghost">See your impact</a>
+              <a href="how-it-works.html" class="btn btn-ghost">What happens next</a>
+            </div>
+          </div>
+
+          <div class="form-trust">
+            <span>🔒 Secure &amp; private</span><span>✓ No obligation</span><span>☎ (800) 555-0199</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-top">
+      <div>
+        <h3>Ready to see your numbers?</h3>
+        <p>Free design, savings and impact report. No obligation.</p>
+      </div>
+      <form class="footer-zip" data-zip-form novalidate>
+        <label class="sr-only" for="footerZip">ZIP code</label>
+        <input id="footerZip" inputmode="numeric" maxlength="5" placeholder="Your ZIP code" autocomplete="postal-code" data-zip />
+        <button class="btn btn-sun" type="submit">Get started →</button>
+      </form>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="./" class="brand light"><svg class="brand-mark"><use href="#mark" /></svg><span>Sunvera</span></a>
+        <p>Power that rises with you. Home solar, batteries and EV charging.</p>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="solutions.html#solar">Solar panels</a><a href="solutions.html#battery">Home batteries</a><a href="solutions.html#ev">EV charging</a><a href="solutions.html#compare">Compare systems</a>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <a href="savings.html">Savings calculator</a><a href="savings.html#financing">Financing options</a><a href="impact.html">Environmental impact</a><a href="how-it-works.html">How it works</a><a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About us</a><a href="quote.html">Get a quote</a><a href="impact.html#sources">Data sources</a>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <a href="tel:+18005550199">(800) 555-0199</a><a href="mailto:hello@sunvera.com">hello@sunvera.com</a><span>Mon–Sat · 8am–8pm</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span data-year></span> Sunvera Energy. All rights reserved.</span>
+      <span>Estimates are not a quote; results vary by location, roof and usage. Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</span>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div><strong>Free savings estimate</strong><span>Takes 60 seconds</span></div>
+    <a href="quote.html" class="btn btn-sun btn-sm">Get started</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
