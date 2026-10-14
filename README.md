@@ -1,6 +1,6 @@
-# Sunvera Solar — website
+# Heliora — website
 
-Static multi-page marketing site for Sunvera home solar, batteries and EV charging.
+Static multi-page marketing site for Heliora home solar, batteries and EV charging.
 Live at **https://solar.codebunny.net** (GitHub Pages, custom domain via `CNAME`).
 
 ## Pages
@@ -37,7 +37,7 @@ Tune market assumptions at the top of the model in `script.js`: `KWH_PER_KW`, `C
 Photography from Unsplash (free to use under the Unsplash License), stored in `assets/img`.
 
 ## Before launch
-- Replace `(800) 555-0199` and `hello@sunvera.com` with real contact details (search `src/`).
+- Replace `(800) 555-0199` and `hello@heliora.com` with real contact details (search `src/`).
 - Confirm warranty terms, offers ($0-down, financing types) and the About-page copy match your business.
 - Connect the lead form to your CRM/backend in `script.js` (search `/api/leads`).
 - Add genuine customer reviews and your own install photos when you have them.

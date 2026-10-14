@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 SITE_URL = "https://" + (ROOT / "CNAME").read_text().strip() if (ROOT / "CNAME").exists() else ""
-BRAND = "Sunvera Solar"
+BRAND = "Heliora"
 
 partials = {p.stem: p.read_text() for p in (SRC / "partials").glob("*.html")}
 

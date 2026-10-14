@@ -6,8 +6,8 @@
 
   // Session storage carries the visitor's estimate between pages (fails safely if blocked).
   const store = {
-    get(k) { try { return JSON.parse(sessionStorage.getItem('sunvera:' + k)); } catch { return null; } },
-    set(k, v) { try { sessionStorage.setItem('sunvera:' + k, JSON.stringify(v)); } catch { /* ignore */ } },
+    get(k) { try { return JSON.parse(sessionStorage.getItem('heliora:' + k)); } catch { return null; } },
+    set(k, v) { try { sessionStorage.setItem('heliora:' + k, JSON.stringify(v)); } catch { /* ignore */ } },
   };
 
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
@@ -292,7 +292,7 @@
     data.estimate = { systemKw: +m.kw.toFixed(1), co2Tonnes25y: Math.round(m.co2), savings25y: Math.round(m.net) };
     // Send to your CRM / backend here, e.g.:
     // fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-    console.info('Sunvera lead captured', data);
+    console.info('Heliora lead captured', data);
 
     $('#successName').textContent = (data.name || 'friend').split(' ')[0];
     form.hidden = true;
